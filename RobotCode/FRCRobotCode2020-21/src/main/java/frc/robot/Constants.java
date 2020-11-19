@@ -16,4 +16,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    public static final int RIGHT_DRIVE_MOTOR_FRONT = 0; //TODO: get CAN bus value
+
 }
