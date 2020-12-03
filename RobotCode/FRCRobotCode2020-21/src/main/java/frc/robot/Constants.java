@@ -19,4 +19,6 @@ public final class Constants {
 
     public static final int RIGHT_DRIVE_MOTOR_FRONT = 0; //TODO: get CAN bus value
 
+
+    public static final int CONTROLLER_PORT = 0; //the port the controller is pluged into
 }
