@@ -17,6 +17,12 @@ package frc.robot;
  */
 public final class Constants {
 
+    //CAN maping
+	public static final int LEFT_DRIVE_MOTOR1_ID = 2; 	//front left motor CAN ID
+	public static final int RIGHT_DRIVE_MOTOR1_ID = 3;	//front right motor CAN ID
+	public static final int LEFT_DRIVE_MOTOR2_ID = 1;	//back left motor CAN ID
+    public static final int RIGHT_DRIVE_MOTOR2_ID = 4;	//back right motor CAN ID
+    
     public static final int RIGHT_DRIVE_MOTOR_FRONT = 0; //TODO: get CAN bus value
 
 
