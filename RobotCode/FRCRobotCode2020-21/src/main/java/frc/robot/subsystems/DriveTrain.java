@@ -40,8 +40,8 @@ public class DriveTrain extends SubsystemBase {
    * Creates a new DriveTrain.
    */
   public DriveTrain() {
-
-  
+    //TODO: Add initialisers and stuff like methods
+    
   }
 
   @Override
