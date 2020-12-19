@@ -7,17 +7,23 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.DriveTrain;
 
 /*
 Allows the driver to move the robot with the controller
 */
 
 public class UserControlDrive extends CommandBase {
+  private DriveTrain driveTrain;
+  private XboxController controller;
   /**
    * Creates a new UserControlDrive.
    */
-  public UserControlDrive() {
+  public UserControlDrive(DriveTrain driveTrain, XboxController xboxController) {
+    this.driveTrain= driveTrain;
+    controller= xboxController;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
