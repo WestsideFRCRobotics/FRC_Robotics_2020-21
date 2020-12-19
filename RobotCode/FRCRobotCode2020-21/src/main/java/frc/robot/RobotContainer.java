@@ -25,7 +25,7 @@ public class RobotContainer {
 
   private final UserControlDrive userControlDrive = new UserControlDrive();
 
-  public XboxController controller = new XboxController(Constants.CONTROLLER_PORT);
+  private final XboxController controller = new XboxController(Constants.CONTROLLER_PORT);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
