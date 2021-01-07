@@ -22,8 +22,8 @@ public class UserControlDrive extends CommandBase {
    * Creates a new UserControlDrive.
    */
   public UserControlDrive(DriveTrain driveTrain, XboxController xboxController) {
-    this.driveTrain= driveTrain;
-    controller= xboxController;
+    this.driveTrain = driveTrain; //only passing a reference. The object is the same as in RobotContainer.
+    controller = xboxController;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
