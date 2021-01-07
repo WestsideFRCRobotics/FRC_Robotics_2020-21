@@ -49,6 +49,8 @@ public class DriveTrain extends SubsystemBase {
 
   }
 
+  //TODO: add dead zones
+
   //method for setting speed of left motor
   public void setLeftMotors(double percent) {
     LEFT.set(ControlMode.PercentOutput, percent);
