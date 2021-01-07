@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 
 /*
@@ -35,6 +36,9 @@ public class UserControlDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    double turnH=controller.getRawAxis(Constants.LEFT_X_AXIS);
+    double speed= controller.getRawAxis(Constants.LEFT_Y_AXIS);
+    driveTrain.drive(speed, turnH);
   }
 
   // Called once the command ends or is interrupted.
