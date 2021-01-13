@@ -29,6 +29,14 @@ public final class Constants {
     public static final int CONTROLLER_PORT = 0; //the port the controller is pluged into
 
     //Joystick mapping
-    public static final int LEFT_X_AXIS = 0;
-    public static final int LEFT_Y_AXIS = 0; // TO DO! set joystick mapping
+    //public static final int LEFT_X_AXIS = 0;
+    //public static final int LEFT_Y_AXIS = 0; // TODO! set joystick mapping
+
+
+
+
+    //Drive Constants
+    public static final double TELEOP_DRIVE_SENSITIVITY = 1;
+    public static final double TELEOP_TURN_SENSITIVITY = 1;
+
 }
