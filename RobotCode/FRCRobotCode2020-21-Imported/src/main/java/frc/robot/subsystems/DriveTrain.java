@@ -21,7 +21,7 @@ This subsystem interfaces with the motor controlers that run the drive train on 
 public class DriveTrain extends SubsystemBase {
 
   // Any percent output level below 2 will shut off the motor
-  private static final double DEAD_ZONE = 2;
+  private static final double DEAD_ZONE = 0.025;
 
 
 

@@ -48,7 +48,7 @@ public class UserControlDrive extends CommandBase {
     //double turnH = Constants.TELEOP_TURN_SENSITIVITY  *  controller.getRawAxis(Constants.LEFT_X_AXIS);
     //double speed = Constants.TELEOP_DRIVE_SENSITIVITY  *  controller.getRawAxis(Constants.LEFT_Y_AXIS);
 
-    //another thing to think about is using non-linear input to speed mappings (S-curve, stepping, etc.)
+    //another thing to think about is usi ng non-linear input to speed mappings (S-curve, stepping, etc.)
 
     driveTrain.drive(speed, turnH);
 
