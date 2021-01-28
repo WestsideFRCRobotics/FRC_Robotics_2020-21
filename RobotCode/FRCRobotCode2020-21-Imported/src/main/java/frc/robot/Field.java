@@ -76,6 +76,13 @@ public class Field
         robotpos = newpos;
     }
 
+    public void Update_Robot_Angle (double newangle)
+    {
+        // Input: souble angle of robot
+        // Output: none
+        robot_angle = newangle;
+    }
+
     public double[] Get_Distance_From_Point (String cord)
     {
         
@@ -99,11 +106,10 @@ public class Field
         return returnlis;
     }
 
-
     public double[] Get_Optimum_angle_To_Point_and_Distance (String cord)
     {
-        // Input - cordinate
-        // Output - List with angle and distance needed top drive to reach the point.
+        // Input: cordinate
+        // Output: List with angle (DEG) and distance needed top drive to reach the point.
 
         double[] deltalist = Get_Distance_From_Point(cord);
 
