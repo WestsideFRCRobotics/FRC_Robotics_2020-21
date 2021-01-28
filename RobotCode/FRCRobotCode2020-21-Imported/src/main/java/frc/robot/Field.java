@@ -16,7 +16,12 @@ public class Field
                                     {"E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10", "E11", "E12"},
                                     {"F0", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"},
                                    }; // A LIST OF ALL POSSIBLE ROBOT AND ITEM LOCATIONS. AcTuAl BrAin DeAtH
-    
+
+    public Field(double x, double y)
+    {
+        
+    }
+
     public double[] Cord_Pos_Ft (String cord)
     {
         
@@ -123,5 +128,6 @@ public class Field
 
         return returnlis;
     }
+
 
 }
