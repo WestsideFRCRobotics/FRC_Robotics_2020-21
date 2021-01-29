@@ -118,7 +118,7 @@ public class Field
 
         double[] deltalist = Get_Distance_From_Point(cord);
 
-        double angle_in_rad = Math.atan(deltalist[1]/deltalist[0]); 
+        double angle_in_rad = Math.atan2(deltalist[1], deltalist[0]);
 
         double angle = Math.toDegrees(angle_in_rad);
 
