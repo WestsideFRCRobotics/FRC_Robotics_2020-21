@@ -44,7 +44,7 @@ public class Field
         
 
         char y = cord.charAt(0);
-        int x = (int) cord.charAt(1);
+        int x = (int) Integer.parseInt(cord.substring(1));
         int y_counter = 0; // establishes a counter to count the number of loops for y
         int x_counter = 0; // establishes a counter to count the number of loops for x
         double y_final = 0.0; // returned y val
