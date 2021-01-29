@@ -17,9 +17,9 @@ public class Field
                                     {"F0", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"},
                                    }; // A LIST OF ALL POSSIBLE ROBOT AND ITEM LOCATIONS. AcTuAl BrAin DeAtH
 
-    public Field(double x, double y)
+    public Field()
     {
-        
+        //Constructor
     }
 
     public double[] Cord_Pos_Ft (String cord)
