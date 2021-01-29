@@ -104,7 +104,7 @@ public class Field
         robot_angle = newangle;
     }
 
-    public double[] Get_Distance_From_Point (String cord)
+    public double[] Get_Distance_From_Point (double[] point)
     {
         
         //Input: The point you want to get a distance to (A string)
@@ -116,7 +116,7 @@ public class Field
 
         double[] Robot_Cords = robotpos;
 
-        double[] Point_Feet_Cords = Cord_Pos_Ft(cord);
+        double[] Point_Feet_Cords = point;
 
         double Delta_X = Point_Feet_Cords[0] - Robot_Cords[0];
 
@@ -127,7 +127,7 @@ public class Field
         return returnlis;
     }
 
-    public double[] Get_Optimum_angle_To_Point_and_Distance (String cord)
+    public double[] Get_Optimum_angle_To_Point_and_Distance (double[] cord)
     {
         // Input: cordinate
         // Output: List with angle (DEG) and distance needed top drive to reach the point.
@@ -140,6 +140,7 @@ public class Field
 
         double hypotenuse = Math.sqrt(deltalist[0]*deltalist[0] + deltalist[1]*deltalist[1]);
         
+
         double[] returnlis = {angle, hypotenuse};
 
         return returnlis;
