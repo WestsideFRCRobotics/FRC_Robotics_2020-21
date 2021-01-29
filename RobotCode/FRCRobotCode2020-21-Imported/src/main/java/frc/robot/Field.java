@@ -54,7 +54,9 @@ public class Field
                 
                 for (String z: m)
                 {
-                    int x_guess = (int) z.charAt(1);
+                    String x_guess1 = z.substring(1);
+
+                    int x_guess = Integer.parseInt(x_guess1);
     
                     if (x_guess == x)
                     {
