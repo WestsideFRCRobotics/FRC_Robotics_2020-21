@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalOutput;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -24,6 +26,10 @@ public final class Constants {
     public static final int RIGHT_DRIVE_MOTOR2_ID = 11;	//back right motor CAN ID
     
     public static final int RIGHT_DRIVE_MOTOR_FRONT = 0; //TODO: get CAN bus value
+
+    //Digital IO mapping
+	public static final int[] FRONT_CENTER_ULTRASONIC_DIO = {1,2};
+
  
 
     public static final int CONTROLLER_PORT = 0; //the port the controller is pluged into
