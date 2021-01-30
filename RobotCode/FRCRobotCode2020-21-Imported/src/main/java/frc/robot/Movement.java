@@ -14,7 +14,7 @@ public class Movement {
     //Gyro gyro = new ADXRS450_Gyro();
     //TODO: figure out if the IMU and gyro use the same port
 
-    Ultrasonic front_center_ultrasonic = new Ultrasonic(Constants.FRONT_CENTER_ULTRASONIC_DIO[0], Constants.FRONT_CENTER_ULTRASONIC_DIO[1]);
+    private final Ultrasonic front_center_ultrasonic = new Ultrasonic(Constants.FRONT_CENTER_ULTRASONIC_DIO[0], Constants.FRONT_CENTER_ULTRASONIC_DIO[1]);
 
 
     public Movement() {
@@ -27,6 +27,9 @@ public class Movement {
         return imu.getGyroAngleY();
     }
 
+    public double getFrontCenterUltrasonicDistance() {
+        return front_center_ultrasonic.getRangeInches();
+    }
 
     
 }
