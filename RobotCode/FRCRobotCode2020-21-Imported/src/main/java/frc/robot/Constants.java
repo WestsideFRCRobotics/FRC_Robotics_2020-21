@@ -45,4 +45,10 @@ public final class Constants {
     public static final double TELEOP_DRIVE_SENSITIVITY = 1;
     public static final double TELEOP_TURN_SENSITIVITY = 1;
 
+
+
+    //Conversion Constants
+    public static final double MAG_TICKS_PER_REVOLUTION=0;
+    public static final double MAG_TICKS_PER_DISTANCE_DRIVE_INCHES=0;
+
 }
