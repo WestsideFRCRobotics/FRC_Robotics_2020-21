@@ -12,7 +12,7 @@ public class Movement {
 
 
 
-    public Movement(DriveTrain driveTrain) {
+    public Movement(DriveTrain driveTrain, Field field) {
         imu.setYawAxis(ADIS16448_IMU.IMUAxis.kY); //TODO: set correct yaw axis
         this.driveTrain = driveTrain;
 
@@ -44,12 +44,14 @@ public class Movement {
                    leftTotalArclength=0, rightTotalArclength=0, lastAngle;
 
     public static void updateRobotPosition(){
-
+        //this method takes the position, arclength, and 
 
 
 
     }
 
+    public static void resetRobotPosition(double positionX, double, positionY, double ){
+    }
 
 
 

@@ -43,8 +43,8 @@ public class RobotContainer {
     controller = new XboxController(Constants.CONTROLLER_PORT);
     userControlDrive = new UserControlDrive(driveTrain, controller);
 
-    movement = new Movement(driveTrain);
-    
+    field = new Field();
+    movement = new Movement(driveTrain, field);
 
 
     configureButtonBindings(); // Configure the button bindings
