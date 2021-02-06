@@ -16,6 +16,8 @@ public class Movement {
         imu.setYawAxis(ADIS16448_IMU.IMUAxis.kY); //TODO: set correct yaw axis
         this.driveTrain = driveTrain;
 
+        driveTrain.setMovement(this); //so drivetrain can have a reference to this class so it can impliment a closed loop system.
+
     }
 
     private final DriveTrain driveTrain;
@@ -39,9 +41,14 @@ public class Movement {
 
 
     private double positionX=0, positionY=0, StartAngle=0,
-                   leftTotalArclength=0, rightTotalArclength=0;
+                   leftTotalArclength=0, rightTotalArclength=0, lastAngle;
+
+    public static void updateRobotPosition(){
 
 
+
+
+    }
 
 
 
