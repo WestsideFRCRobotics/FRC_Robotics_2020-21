@@ -24,21 +24,19 @@ public final class Constants {
 	public static final int RIGHT_DRIVE_MOTOR1_ID = 10;	//front right motor CAN ID
 	public static final int LEFT_DRIVE_MOTOR2_ID = 1;	//back left motor CAN ID
     public static final int RIGHT_DRIVE_MOTOR2_ID = 11;	//back right motor CAN ID
-    
-    public static final int RIGHT_DRIVE_MOTOR_FRONT = 0; //TODO: get CAN bus value
+
+	public static final int LEFT_LOW_FLYWHEEL_MOTOR_ID = -1; 	//lower left motor CAN ID
+	public static final int RIGHT_LOW_FLYWHEEL_MOTOR_ID = -1;	//lower right motor CAN ID
+	public static final int LEFT_HIGH_FLYWHEEL_MOTOR_ID = -1;	//upper left motor CAN ID
+	public static final int RIGHT_HIGH_FLYWHEEL_MOTOR_ID = -1;	//upper right motor CAN ID
+
 
     //Digital IO mapping
 	public static final int[] FRONT_CENTER_ULTRASONIC_DIO = {1,2};
 
  
-
+    //-------------------
     public static final int CONTROLLER_PORT = 0; //the port the controller is pluged into
-
-    //Joystick mapping
-    //public static final int LEFT_X_AXIS = 0;
-    //public static final int LEFT_Y_AXIS = 0; // TODO! set joystick mapping
-
-
 
 
     //Drive Constants
@@ -46,9 +44,12 @@ public final class Constants {
     public static final double TELEOP_TURN_SENSITIVITY = 1;
 
 
-
     //Conversion Constants
-    public static final double MAG_TICKS_PER_REVOLUTION=0;
-    public static final double MAG_TICKS_PER_DISTANCE_DRIVE_INCHES=0;
+    public static final double MAG_TICKS_PER_100MS_PER_RPM = 4096.0/600;
+    public static final double DISTANCE_DRIVE_FEET_PER_MAG_TICK = -1;
+
+
+    //PID constants
+    public static final double FLYWHEEL_KP= .1, FLYWHEEL_KI=0, FLYWHEEL_KD=.02, FLYWHEEL_KF=.1;
 
 }
