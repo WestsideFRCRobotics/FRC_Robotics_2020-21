@@ -23,7 +23,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain driveTrain;
 
-  private final UserControlDrive userControlDrive;
+  private final TeleOp teleOp;
   //Takes input from the XboxController and changes it into output for the DriveTrain
 
   private final XboxController controller;
@@ -41,7 +41,7 @@ public class RobotContainer {
     driveTrain = new DriveTrain();
 
     controller = new XboxController(Constants.CONTROLLER_PORT);
-    userControlDrive = new UserControlDrive(driveTrain, controller);
+    teleOp = new TeleOp(driveTrain, controller);
 
     field = new Field();
     movement = new Movement(driveTrain, field);
@@ -71,7 +71,7 @@ public class RobotContainer {
    return null;
   }
 
-  public Command getuserControlDriveCommand (){
-    return userControlDrive;
+  public Command getTeleOpCommand (){
+    return teleOp;
   }
 }

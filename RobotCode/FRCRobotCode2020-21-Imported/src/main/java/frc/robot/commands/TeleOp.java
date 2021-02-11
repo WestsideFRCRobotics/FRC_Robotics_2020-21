@@ -17,13 +17,13 @@ import frc.robot.subsystems.DriveTrain;
 Allows the driver to move the robot with the controller
 */
 
-public class UserControlDrive extends CommandBase {
+public class TeleOp extends CommandBase {
   private DriveTrain driveTrain;
   private XboxController controller;
   /**
    * Creates a new UserControlDrive.
    */
-  public UserControlDrive(DriveTrain driveTrain, XboxController xboxController) {
+  public TeleOp(DriveTrain driveTrain, XboxController xboxController) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(driveTrain);
     //^^^ adding this line of code makes sure we don't ever have two commands using the same subsystem at one time
