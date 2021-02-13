@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import frc.robot.Constants;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.*;
 
 /*
 Allows the driver to move the robot with the controller
@@ -20,6 +20,7 @@ Allows the driver to move the robot with the controller
 public class TeleOp extends CommandBase {
   private DriveTrain driveTrain;
   private XboxController controller;
+  private FlyWheel flywheel;
   /**
    * Creates a new UserControlDrive.
    */
@@ -51,6 +52,8 @@ public class TeleOp extends CommandBase {
     //another thing to think about is usi ng non-linear input to speed mappings (S-curve, stepping, etc.)
 
     driveTrain.drive(speed, turnH);
+
+    flywheel.flywheelUpToSpeedteleop(controller.getYButton(), controller.getXButton(), controller.getAButton(), controller.getBButton());
 
   }
 

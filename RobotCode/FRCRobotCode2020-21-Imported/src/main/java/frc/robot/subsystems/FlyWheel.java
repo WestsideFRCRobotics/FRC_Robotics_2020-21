@@ -10,6 +10,8 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.simulation.XboxControllerSim;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -76,6 +78,57 @@ public class FlyWheel extends SubsystemBase {
   //stops the flywheel from running. The motors should coast to a stop.
   public void stop(){
     controlMotor.neutralOutput();
+  }
+  
+
+  public void flywheelUpToSpeedteleop(boolean y_input, boolean x_input, boolean a_input, boolean b_input)
+  {
+    boolean isFlywheelOn = false;
+    double threshold = 0; // Change this based on what is the minimum value in rpm for the flywheel is.
+    
+    if (Constants.MAG_TICKS_PER_100MS_PER_RPM > threshold)
+    {
+      isFlywheelOn = true;
+    }
+    else
+    {
+      isFlywheelOn = false;
+    }
+
+
+    // each button on the right pad corresponds to a zone.
+
+    double green_zone_velocity = 10;
+    if ((x_input == true) && (isFlywheelOn == true)){
+      setControlledVelocity(green_zone_velocity);
+    }
+
+
+    double yellow_zone_velocity = 20;
+    if ((a_input == true) && (isFlywheelOn == true)){
+      setControlledVelocity(yellow_zone_velocity);
+    }
+    
+    
+    double blue_zone_velocity = 20;
+    if ((b_input == true) && (isFlywheelOn == true)){
+      setControlledVelocity(blue_zone_velocity);
+    }
+
+
+    double red_zone_velocity = 20;
+    if ((y_input == true) && (isFlywheelOn == true)){
+      setControlledVelocity(red_zone_velocity);
+    }
+
+    
+  }
+  
+  //TODO - Find distance from the target and then set the flywheel velovity to that.
+  // Can be triggered by left bumper
+  public void distanceshot(){
+    
+
   }
 
 }
