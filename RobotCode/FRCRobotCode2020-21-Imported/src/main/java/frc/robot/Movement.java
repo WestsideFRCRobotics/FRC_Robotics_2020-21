@@ -30,7 +30,7 @@ public class Movement {
     private final Ultrasonic front_center_ultrasonic = new Ultrasonic(Constants.FRONT_CENTER_ULTRASONIC_DIO[0], Constants.FRONT_CENTER_ULTRASONIC_DIO[1]);
 
     //returns the angle the robot is facing if the initial angle its facing was 0
-    public double getYawAngle() {
+    public double getAngle() {
         return imu.getGyroAngleY();
     }
 
