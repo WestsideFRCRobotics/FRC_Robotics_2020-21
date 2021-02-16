@@ -12,6 +12,7 @@ import frc.robot.Constants;
 import frc.robot.Movement;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.IMotorController;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -42,7 +43,13 @@ public class DriveTrain extends SubsystemBase {
   private TalonSRX RightMotor2 = new TalonSRX(Constants.RIGHT_DRIVE_MOTOR2_ID);
   
   private final IMotorController LEFT = LeftMotor1;
-  private final IMotorController RIGHT = RightMotor1; 
+  private final IMotorController RIGHT = RightMotor1;
+
+
+
+
+
+
   /**
    * Creates a new DriveTrain.
    */
@@ -53,6 +60,13 @@ public class DriveTrain extends SubsystemBase {
 
     LeftMotor2.follow(LEFT);
     RightMotor2.follow(RIGHT);
+
+
+    LeftMotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+    RightMotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+    LeftMotor1.setSensorPhase(false); //TODO: make sure sensor phase is correct
+    RightMotor1.setSensorPhase(false);
+
 
   }
 
@@ -83,6 +97,24 @@ public class DriveTrain extends SubsystemBase {
   public void stop() {
     LEFT.neutralOutput();
     RIGHT.neutralOutput();
+  }
+
+
+  //methods for geting and reseting wheel encoders.
+  public double getLeftDistanceTraveled() {
+    return LEFT.getSelectedSensorPosition(0)*Constants.DISTANCE_DRIVE_FEET_PER_MAG_TICK;
+  }
+  public double getRightDistanceTraveled() {
+    return RIGHT.getSelectedSensorPosition(0)*Constants.DISTANCE_DRIVE_FEET_PER_MAG_TICK;
+  }
+  public double getAverageDistanceTraveled() {
+    return (LEFT.getSelectedSensorPosition(0)+RIGHT.getSelectedSensorPosition(0))/2*Constants.DISTANCE_DRIVE_FEET_PER_MAG_TICK;
+  }
+  
+  public void resetEncoderPositions() {
+    //args: position, pidIndex, misTimeout
+    LEFT.setSelectedSensorPosition(0, 0, 10);
+    RIGHT.setSelectedSensorPosition(0, 0, 10);
   }
 
   
