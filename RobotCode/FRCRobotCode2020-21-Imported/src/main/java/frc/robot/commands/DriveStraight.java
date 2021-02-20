@@ -11,17 +11,18 @@ import frc.robot.Movement;
 import frc.robot.subsystems.DriveTrain;
 
 
-//TODO: figure out how to control speed
+//IMPORTANT NOTE: this command will make the robot drive straight a certain distance, but we have no control over its speed.
+//when we actually use this to run autonomous paths, it will need to speed up at the begining and slow down at the end.
+//we will need to set a start speed and an end speed. This can also be done with PID, but we might do better with a more straightforward approach
 
-// NOTE:  Consider using this command inline, rather than writing a subclass.  For more
-// information, see:
-// https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class DriveStraight extends PIDCommand {
 
   private final DriveTrain driveTrain;
 
+  private final double TARGET_DISTANCE_FEET;
+
   /** Creates a new DriveStraight. */
-  public DriveStraight(double TargetAngleDegrees, double TargetDistance, double cruisePower, DriveTrain driveTrain, Movement movement) {
+  public DriveStraight(double TargetAngleDegrees, double TargetDistanceFeet, double cruisePower, DriveTrain driveTrain, Movement movement) {
 
     super(
         // The controller that the command will use
@@ -39,11 +40,16 @@ public class DriveStraight extends PIDCommand {
     addRequirements(driveTrain);
     this.driveTrain = driveTrain;
 
+    driveTrain.resetEncoderPositions();
+
+    TARGET_DISTANCE_FEET = TargetDistanceFeet;
+
+
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return driveTrain.getAverageDistanceTraveled() >= TARGET_DISTANCE_FEET;
   }
 }
