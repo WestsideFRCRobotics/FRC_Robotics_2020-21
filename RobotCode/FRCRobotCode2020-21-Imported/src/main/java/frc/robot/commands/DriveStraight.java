@@ -30,7 +30,7 @@ public class DriveStraight extends PIDCommand {
         // This should return the measurement
         () -> movement.getAngle(),
         // This should return the setpoint (can also be a constant)
-        () -> TargetAngleDegrees,
+        TargetAngleDegrees,
         // This uses the output
         output -> driveTrain.drive(cruisePower, output));
 
