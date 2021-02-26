@@ -20,8 +20,8 @@ public class FlyWheel extends SubsystemBase {
 
   //instances of all four motors that spin the flywheel
   private final TalonSRX leftLowMotor = new TalonSRX(Constants.LEFT_LOW_FLYWHEEL_MOTOR_ID);
-  private final VictorSPX rightLowMotor = new VictorSPX(Constants.RIGHT_LOW_FLYWHEEL_MOTOR_ID); //this motor is the master
-  private final VictorSPX leftHighMotor = new VictorSPX(Constants.LEFT_HIGH_FLYWHEEL_MOTOR_ID);
+  private final TalonSRX rightLowMotor = new TalonSRX(Constants.RIGHT_LOW_FLYWHEEL_MOTOR_ID); //this motor is the master
+  private final TalonSRX leftHighMotor = new TalonSRX(Constants.LEFT_HIGH_FLYWHEEL_MOTOR_ID);
   private final TalonSRX rightHighMotor = new TalonSRX(Constants.RIGHT_HIGH_FLYWHEEL_MOTOR_ID);
 
   //To run all motors in sync with each other, we have 3 of the motors follow the controlMotor
