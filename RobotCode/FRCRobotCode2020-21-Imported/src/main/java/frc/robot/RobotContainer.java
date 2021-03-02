@@ -30,10 +30,6 @@ public class RobotContainer {
 
 
 
-  private final Movement movement;
-
-  private final Field field;
-
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
@@ -42,10 +38,6 @@ public class RobotContainer {
 
     controller = new XboxController(Constants.CONTROLLER_PORT);
     teleOp = new TeleOp(driveTrain, controller);
-
-    field = new Field();
-    movement = new Movement(driveTrain, field);
-
 
     configureButtonBindings(); // Configure the button bindings
   }

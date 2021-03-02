@@ -8,7 +8,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.simulation.XboxControllerSim;
@@ -99,26 +98,43 @@ public class FlyWheel extends SubsystemBase {
     // each button on the right pad corresponds to a zone.
 
     double green_zone_velocity = 10;
-    if ((x_input == true) && (isFlywheelOn == true)){
+    if ((x_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(green_zone_velocity);
+    }
+
+    else if ((x_input == true) && (isFlywheelOn == true))
+    {
+      stop(); 
     }
 
 
     double yellow_zone_velocity = 20;
-    if ((a_input == true) && (isFlywheelOn == true)){
+    if ((a_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(yellow_zone_velocity);
+    }
+    else if ((a_input == true) && (isFlywheelOn == true))
+    {
+      stop(); 
     }
     
     
     double blue_zone_velocity = 20;
-    if ((b_input == true) && (isFlywheelOn == true)){
+    if ((b_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(blue_zone_velocity);
+    }
+    else if ((b_input == true) && (isFlywheelOn == true))
+    {
+      stop(); 
     }
 
 
     double red_zone_velocity = 20;
-    if ((y_input == true) && (isFlywheelOn == true)){
+    if ((y_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(red_zone_velocity);
+    }
+    else if ((y_input == true) && (isFlywheelOn == true))
+    {
+      stop(); 
     }
 
     
@@ -129,6 +145,18 @@ public class FlyWheel extends SubsystemBase {
   public void distanceshot(){
     
 
+  }
+
+  public void  flywheeltest(boolean rtbumper)
+  {
+    if (rtbumper == true)
+    {
+      setControlledVelocity(30);
+    }
+    else
+    {
+      stop(); 
+    }
   }
 
 }

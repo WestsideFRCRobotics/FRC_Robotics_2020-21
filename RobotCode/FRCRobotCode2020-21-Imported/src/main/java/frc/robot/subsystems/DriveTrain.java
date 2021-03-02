@@ -9,7 +9,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.Movement;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -24,11 +23,6 @@ public class DriveTrain extends SubsystemBase {
 
   // Any percent output level below 2 will shut off the motor
   private static final double DEAD_ZONE = 0.025;
-
-  private Movement movement;
-  public void setMovement(Movement m){
-    movement = m;
-  }
 
 
   // Put methods for controlling this subsystem

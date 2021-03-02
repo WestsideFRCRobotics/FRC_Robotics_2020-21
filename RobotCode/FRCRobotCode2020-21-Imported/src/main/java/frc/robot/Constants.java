@@ -25,10 +25,10 @@ public final class Constants {
 	public static final int LEFT_DRIVE_MOTOR2_ID = 1;	//back left motor CAN ID
     public static final int RIGHT_DRIVE_MOTOR2_ID = 11;	//back right motor CAN ID
 
-	public static final int LEFT_LOW_FLYWHEEL_MOTOR_ID = -1; 	//lower left motor CAN ID
-	public static final int RIGHT_LOW_FLYWHEEL_MOTOR_ID = -1;	//lower right motor CAN ID
-	public static final int LEFT_HIGH_FLYWHEEL_MOTOR_ID = -1;	//upper left motor CAN ID
-	public static final int RIGHT_HIGH_FLYWHEEL_MOTOR_ID = -1;	//upper right motor CAN ID
+	public static final int LEFT_LOW_FLYWHEEL_MOTOR_ID = 20; 	//lower left motor CAN ID
+	public static final int RIGHT_LOW_FLYWHEEL_MOTOR_ID = 30;	//lower right motor CAN ID
+	public static final int LEFT_HIGH_FLYWHEEL_MOTOR_ID = 21;	//upper left motor CAN ID
+	public static final int RIGHT_HIGH_FLYWHEEL_MOTOR_ID = 31;	//upper right motor CAN ID
 
 
     //Digital IO mapping
@@ -51,10 +51,6 @@ public final class Constants {
 
     //PID constants
     public static final double FLYWHEEL_KP= .1, FLYWHEEL_KI=0, FLYWHEEL_KD=.02, FLYWHEEL_KF=.1;
-
-    public static final double TURN_KP=-1234, TURN_KI=-1234, TURN_KD=-1234, DEGREE_TOLERANCE=-1234, TURN_RATE_TOLERANCE=-1234;
-
-    public static final double DRIVE_KP=-1234, DRIVE_KI=-1234, DRIVE_KD=-1234;
 
     
 
