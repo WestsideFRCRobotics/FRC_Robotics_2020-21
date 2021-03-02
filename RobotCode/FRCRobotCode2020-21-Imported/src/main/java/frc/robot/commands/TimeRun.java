@@ -14,6 +14,7 @@ public class TimeRun extends WaitCommand {
 
   public TimeRun(double seconds, Command command) {
     super(seconds);
+    //put something here to make the command end when this command ends
   }
 
   

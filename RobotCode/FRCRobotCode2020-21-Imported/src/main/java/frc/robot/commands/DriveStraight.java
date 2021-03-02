@@ -31,7 +31,9 @@ public class DriveStraight extends CommandBase {
     this.driveTrain = driveTrain;
     this.movement = movement;
 
+    // we will run our PID controller in ticksper100ms units from the encoder
     angleController.setSetpoint(targetAngleDegrees*Constants.TICKSPER100MS_PER_FTPERSEC);
+
     velocityController.setSetpoint(velocityftpersec);
     
   }
@@ -46,7 +48,9 @@ public class DriveStraight extends CommandBase {
 
     //It's honestly just this simple. This basicly does exactly the same thing as the PIDController, but we can see what's going on behind the scenes.
     driveTrain.drive(
-      velocityController.calculate()
+      velocityController.calculate(/*get encoder velocity*/),
+      angleController.calculate(movement.getAngle())
+    );
 
 
 

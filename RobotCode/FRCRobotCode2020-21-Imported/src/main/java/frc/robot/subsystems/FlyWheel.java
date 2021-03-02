@@ -72,7 +72,7 @@ public class FlyWheel extends SubsystemBase {
 
   //this method runs the flywheel with a PID control loop
   public void setControlledVelocity(double WheelRPM){
-    controlMotor.set(ControlMode.Velocity, WheelRPM*Constants.MAG_TICKS_PER_100MS_PER_RPM);
+    controlMotor.set(ControlMode.Velocity, WheelRPM*Constants.TICKSPER100MS_PER_RPM);
   }
 
   //stops the flywheel from running. The motors should coast to a stop.
@@ -86,7 +86,7 @@ public class FlyWheel extends SubsystemBase {
     boolean isFlywheelOn = false;
     double threshold = 0; // Change this based on what is the minimum value in rpm for the flywheel is.
     
-    if (Constants.MAG_TICKS_PER_100MS_PER_RPM > threshold)
+    if (Constants.TICKSPER100MS_PER_RPM > threshold)
     {
       isFlywheelOn = true;
     }
