@@ -42,8 +42,7 @@ public class Movement {
 
     private double positionX=0, positionY=0, StartAngle=0,
                    leftTotalArclength=0, rightTotalArclength=0, lastAngle;
-
-
+                   
     public static void resetRobotPosition(double positionX, double positionY, double angle){
     }
 

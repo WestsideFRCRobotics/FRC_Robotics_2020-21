@@ -5,51 +5,61 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.controller.PIDController;
-import edu.wpi.first.wpilibj2.command.PIDCommand;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Movement;
 import frc.robot.subsystems.DriveTrain;
 
+public class DriveStraight extends CommandBase {
 
-//IMPORTANT NOTE: this command will make the robot drive straight a certain distance, but we have no control over its speed.
-//when we actually use this to run autonomous paths, it will need to speed up at the begining and slow down at the end.
-//we will need to set a start speed and an end speed. This can also be done with PID, but we might do better with a more straightforward approach
-
-public class DriveStraight extends PIDCommand {
-
+  //dependancies 
   private final DriveTrain driveTrain;
+  private final Movement movement;
 
-  private final double TARGET_DISTANCE_FEET;
+
+
+  //This is a more explicite way of using the PIDController. I'm sure everyone will like this better.
+  //note how we need two controllers for driving straight, one for controlling the angle and another for controlling the speed
+  private final PIDController angleController = new PIDController(Constants.TURN_KP, Constants.TURN_KI, Constants.TURN_KD);
+  private final PIDController velocityController = new PIDController(Constants.TURN_KP, Constants.TURN_KI, Constants.TURN_KD);
 
   /** Creates a new DriveStraight. */
-  public DriveStraight(double TargetAngleDegrees, double TargetDistanceFeet, double cruisePower, DriveTrain driveTrain, Movement movement) {
+  public DriveStraight(double velocityftpersec, double targetAngleDegrees, DriveTrain driveTrain, Movement movement) {
+    //We will use a seperate command to do time control. This will give us more flexibility with our autonomous setup.
 
-    super(
-        // The controller that the command will use
-        new PIDController(Constants.TURN_KP, Constants.TURN_KI, Constants.TURN_KD),
-        // This should return the measurement
-        () -> movement.getAngle(),
-        // This should return the setpoint (can also be a constant)
-        TargetAngleDegrees,
-        // This uses the output
-        output -> driveTrain.drive(cruisePower, output));
-
-
-    // Use addRequirements() here to declare subsystem dependencies.
-    // Configure additional PID options by calling `getController` here.
     addRequirements(driveTrain);
     this.driveTrain = driveTrain;
+    this.movement = movement;
 
-    driveTrain.resetEncoderPositions();
+    angleController.setSetpoint(targetAngleDegrees*Constants.TICKSPER100MS_PER_FTPERSEC);
+    velocityController.setSetpoint(velocityftpersec);
+    
+  }
 
-    TARGET_DISTANCE_FEET = TargetDistanceFeet;
+  // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {}
+
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
+
+    //It's honestly just this simple. This basicly does exactly the same thing as the PIDController, but we can see what's going on behind the scenes.
+    driveTrain.drive(
+      velocityController.calculate()
+
+
 
 
   }
 
+  // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {}
+
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return driveTrain.getAverageDistanceTraveled() >= TARGET_DISTANCE_FEET;
+    return false;
   }
 }
