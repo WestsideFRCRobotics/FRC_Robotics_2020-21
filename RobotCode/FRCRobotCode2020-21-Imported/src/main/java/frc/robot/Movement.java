@@ -34,17 +34,24 @@ public class Movement {
         return imu.getGyroAngleY();
     }
 
+    public void resetAngle() {
+        
+    }
+    public void resetAngle(double angle) {
+
+    }
+
     public double getFrontCenterUltrasonicDistance() {
         return front_center_ultrasonic.getRangeInches();
     }
 
 
 
-    private double positionX=0, positionY=0, StartAngle=0,
-                   leftTotalArclength=0, rightTotalArclength=0, lastAngle;
+    // private double positionX=0, positionY=0, StartAngle=0,
+    //                leftTotalArclength=0, rightTotalArclength=0, lastAngle;
                    
-    public static void resetRobotPosition(double positionX, double positionY, double angle){
-    }
+    // public static void resetRobotPosition(double positionX, double positionY, double angle){
+    // }
 
 
 

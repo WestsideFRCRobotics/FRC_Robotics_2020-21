@@ -46,7 +46,7 @@ public final class Constants {
 
     //Conversion Constants
     public static final double TICKSPER100MS_PER_RPM = 4096.0/600;
-    public static final double TICKSPER100MS_PER_FTPERSEC = 4096.0/(8*Math.PI)*.1;
+    public static final double TICKSPER100MS_PER_FTPERSEC = 4096.0/(8*Math.PI)*.1; //for 8in diameter wheel
     public static final double DISTANCE_DRIVE_FEET_PER_MAG_TICK = 8*Math.PI/4096.0;
 
 

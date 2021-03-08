@@ -21,7 +21,7 @@ public class DriveStraight extends CommandBase {
   //This is a more explicite way of using the PIDController. I'm sure everyone will like this better.
   //note how we need two controllers for driving straight, one for controlling the angle and another for controlling the speed
   private final PIDController angleController = new PIDController(Constants.TURN_KP, Constants.TURN_KI, Constants.TURN_KD);
-  private final PIDController velocityController = new PIDController(Constants.TURN_KP, Constants.TURN_KI, Constants.TURN_KD);
+  private final PIDController velocityController = new PIDController(Constants.DRIVE_KP, Constants.DRIVE_KI, Constants.DRIVE_KD);
 
   /** Creates a new DriveStraight. */
   public DriveStraight(double velocityftpersec, double targetAngleDegrees, DriveTrain driveTrain, Movement movement) {
@@ -32,9 +32,9 @@ public class DriveStraight extends CommandBase {
     this.movement = movement;
 
     // we will run our PID controller in ticksper100ms units from the encoder
-    angleController.setSetpoint(targetAngleDegrees*Constants.TICKSPER100MS_PER_FTPERSEC);
+    angleController.setSetpoint(targetAngleDegrees);
 
-    velocityController.setSetpoint(velocityftpersec);
+    velocityController.setSetpoint(velocityftpersec*Constants.TICKSPER100MS_PER_FTPERSEC);
     
   }
 
@@ -48,7 +48,7 @@ public class DriveStraight extends CommandBase {
 
     //It's honestly just this simple. This basicly does exactly the same thing as the PIDController, but we can see what's going on behind the scenes.
     driveTrain.drive(
-      velocityController.calculate(/*get encoder velocity*/),
+      velocityController.calculate(driveTrain.getAverageTicksPer100ms()),
       angleController.calculate(movement.getAngle())
     );
 

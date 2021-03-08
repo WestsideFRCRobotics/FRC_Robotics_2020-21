@@ -110,6 +110,16 @@ public class DriveTrain extends SubsystemBase {
   public double getAverageDistanceTraveled() {
     return (LEFT.getSelectedSensorPosition(0)+RIGHT.getSelectedSensorPosition(0))/2*Constants.DISTANCE_DRIVE_FEET_PER_MAG_TICK;
   }
+
+  public double getLeftTicksPer100ms() {
+    return LEFT.getActiveTrajectoryVelocity();
+  }
+  public double getRightTicksPer100ms() {
+    return RIGHT.getActiveTrajectoryVelocity();
+  }
+  public double getAverageTicksPer100ms() {
+    return (RIGHT.getActiveTrajectoryVelocity() + LEFT.getActiveTrajectoryVelocity())/2;
+  }
   
   public void resetEncoderPositions() {
     //args: position, pidIndex, misTimeout
