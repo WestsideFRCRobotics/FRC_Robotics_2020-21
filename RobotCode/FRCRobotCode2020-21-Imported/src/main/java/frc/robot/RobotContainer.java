@@ -34,6 +34,8 @@ public class RobotContainer {
 
   private final Field field;
 
+  private final Autonomous autonomous;
+
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
@@ -45,6 +47,8 @@ public class RobotContainer {
 
     field = new Field();
     movement = new Movement(driveTrain, field);
+
+    autonomous = new Autonomous(driveTrain, movement, field);
 
 
     configureButtonBindings(); // Configure the button bindings
@@ -68,7 +72,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
    // return m_autoCommand;
-   return null;
+   return autonomous.Square();
   }
 
   public Command getTeleOpCommand (){
