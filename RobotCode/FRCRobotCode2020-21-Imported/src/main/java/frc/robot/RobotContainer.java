@@ -23,6 +23,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain driveTrain;
 
+  private final FlyWheel flyWheel;
+
   private final TeleOp teleOp;
   //Takes input from the XboxController and changes it into output for the DriveTrain
 
@@ -40,10 +42,12 @@ public class RobotContainer {
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
+    
     driveTrain = new DriveTrain();
+    flyWheel = new FlyWheel();
 
     controller = new XboxController(Constants.CONTROLLER_PORT);
-    teleOp = new TeleOp(driveTrain, controller);
+    teleOp = new TeleOp(driveTrain, controller, flyWheel);
 
     field = new Field();
     movement = new Movement(driveTrain, field);
