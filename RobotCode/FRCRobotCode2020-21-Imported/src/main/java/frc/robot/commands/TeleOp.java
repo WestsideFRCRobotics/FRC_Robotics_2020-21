@@ -24,12 +24,14 @@ public class TeleOp extends CommandBase {
   /**
    * Creates a new UserControlDrive.
    */
-  public TeleOp(DriveTrain driveTrain, XboxController xboxController) {
+  public TeleOp(DriveTrain driveTrain, XboxController xboxController, FlyWheel flywheel) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(driveTrain);
+    addRequirements(driveTrain, flywheel);
     //^^^ adding this line of code makes sure we don't ever have two commands using the same subsystem at one time
 
     this.driveTrain = driveTrain; //only passing a reference. The object is the same as in RobotContainer.
+    this.flywheel = flywheel;
+    
     controller = xboxController;
 
   }
