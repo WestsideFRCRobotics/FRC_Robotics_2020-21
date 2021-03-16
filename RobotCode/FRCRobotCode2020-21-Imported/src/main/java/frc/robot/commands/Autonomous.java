@@ -66,7 +66,12 @@ public class Autonomous {
     }
 
 
-
+    public Command test()
+    {
+        return new SequentialCommandGroup(
+            new TurnToAngle(90, driveTrain, movement)
+        );
+    }
 
     
 }

@@ -61,7 +61,7 @@ public final class Constants {
     //PID constants
     public static final double FLYWHEEL_KP= .1, FLYWHEEL_KI=0, FLYWHEEL_KD=.02, FLYWHEEL_KF=.1;
 
-    public static final double TURN_KP=-1234, TURN_KI=-1234, TURN_KD=-1234, DEGREE_TOLERANCE=-1234, TURN_RATE_TOLERANCE=-1234;
+    public static final double TURN_KP=1, TURN_KI=0, TURN_KD=0, DEGREE_TOLERANCE=1, TURN_RATE_TOLERANCE=1;
 
     public static final double DRIVE_KP=-1234, DRIVE_KI=-1234, DRIVE_KD=-1234, DRIVE_KF=-1234;
 

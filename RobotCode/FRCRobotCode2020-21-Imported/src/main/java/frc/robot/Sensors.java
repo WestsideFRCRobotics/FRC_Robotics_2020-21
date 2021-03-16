@@ -42,7 +42,7 @@ public class Sensors {
     }
 
     public void resetAngle() {
-        
+        ahrs.calibrate();
     }
     public void resetAngle(double angle) {
 
