@@ -31,7 +31,7 @@ public class Movement {
 
     //returns the angle the robot is facing if the initial angle its facing was 0
     public double getAngle() {
-        return 1; //imu.getGyroAngleY();
+        return 0; //imu.getGyroAngleY();
     }
 
     public void resetAngle() {
