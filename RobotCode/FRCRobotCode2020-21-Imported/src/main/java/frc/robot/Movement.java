@@ -13,7 +13,7 @@ public class Movement {
 
 
     public Movement(DriveTrain driveTrain, Field field) {
-        imu.setYawAxis(ADIS16448_IMU.IMUAxis.kY); //TODO: set correct yaw axis
+        //imu.setYawAxis(ADIS16448_IMU.IMUAxis.kY); //TODO: set correct yaw axis
         this.driveTrain = driveTrain;
 
         driveTrain.setMovement(this); //so drivetrain can have a reference to this class so it can impliment a closed loop system.
@@ -22,7 +22,7 @@ public class Movement {
 
     private final DriveTrain driveTrain;
 
-    private final ADIS16448_IMU imu = new ADIS16448_IMU();
+    //private final ADIS16448_IMU imu = new ADIS16448_IMU();
 
     //Gyro gyro = new ADXRS450_Gyro();
     //TODO: figure out if the IMU and gyro use the same port
@@ -31,7 +31,7 @@ public class Movement {
 
     //returns the angle the robot is facing if the initial angle its facing was 0
     public double getAngle() {
-        return imu.getGyroAngleY();
+        return 1; //imu.getGyroAngleY();
     }
 
     public void resetAngle() {
