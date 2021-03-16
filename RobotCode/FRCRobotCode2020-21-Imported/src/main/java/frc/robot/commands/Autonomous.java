@@ -6,16 +6,17 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.*;
 import frc.robot.*;
 
+
 public class Autonomous {
 
     private final DriveTrain driveTrain;
   
-    private final Movement movement;
+    private final Sensors movement;
   
     private final Field field;
 
 
-    public Autonomous(DriveTrain driveTrain, Movement movement, Field field) {
+    public Autonomous(DriveTrain driveTrain, Sensors movement, Field field) {
         this.driveTrain = driveTrain;
         this.movement = movement;
         this.field = field;

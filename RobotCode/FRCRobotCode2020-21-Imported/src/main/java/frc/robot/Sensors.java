@@ -1,6 +1,7 @@
 package frc.robot;
 
-import com.analog.adis16448.frc.ADIS16448_IMU;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
 
 import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.subsystems.DriveTrain;
@@ -8,17 +9,21 @@ import frc.robot.subsystems.DriveTrain;
 //import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 //import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-public class Movement {
+public class Sensors {
 
 
 
-    public Movement(DriveTrain driveTrain, Field field) {
+    public Sensors(DriveTrain driveTrain, Field field) {
         //imu.setYawAxis(ADIS16448_IMU.IMUAxis.kY); //TODO: set correct yaw axis
         this.driveTrain = driveTrain;
 
         driveTrain.setMovement(this); //so drivetrain can have a reference to this class so it can impliment a closed loop system.
 
     }
+
+    
+    AHRS ahrs = new AHRS(SPI.Port.kMXP);
+
 
     private final DriveTrain driveTrain;
 

@@ -14,6 +14,7 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -34,7 +35,7 @@ public class RobotContainer {
 
 
 
-  private final Movement movement;
+  private final Sensors movement;
 
   private final Field field;
 
@@ -55,7 +56,7 @@ public class RobotContainer {
     teleOp = new TeleOp(driveTrain, controller, flyWheel);
 
     field = new Field();
-    movement = new Movement(driveTrain, field);
+    movement = new Sensors(driveTrain, field);
 
     autonomous = new Autonomous(driveTrain, movement, field);
 
@@ -63,7 +64,7 @@ public class RobotContainer {
     chooser.addOption("None", new InstantCommand());
     chooser.addOption("squareOld", autonomous.SquareOld());
     chooser.addOption("squareNew", autonomous.SquareNew());
-
+    SmartDashboard.putData("Auto mode", chooser);
 
 
     configureButtonBindings(); // Configure the button bindings
