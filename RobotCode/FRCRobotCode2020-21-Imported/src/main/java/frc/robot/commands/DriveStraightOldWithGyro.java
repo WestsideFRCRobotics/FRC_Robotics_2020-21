@@ -7,14 +7,14 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.Movement;
+import frc.robot.Sensors;
 import frc.robot.subsystems.DriveTrain;
 
 public class DriveStraightOldWithGyro extends CommandBase {
 
   //dependancies 
   private final DriveTrain driveTrain;
-  private final Movement movement;
+  private final Sensors movement;
 
 
 
@@ -24,7 +24,7 @@ public class DriveStraightOldWithGyro extends CommandBase {
   private final PIDController velocityController = new PIDController(Constants.DRIVE_KP, Constants.DRIVE_KI, Constants.DRIVE_KD);
 
   /** Creates a new DriveStraight. */
-  public DriveStraightOldWithGyro(double velocityftpersec, double targetAngleDegrees, DriveTrain driveTrain, Movement movement) {
+  public DriveStraightOldWithGyro(double velocityftpersec, double targetAngleDegrees, DriveTrain driveTrain, Sensors movement) {
     //We will use a seperate command to do time control. This will give us more flexibility with our autonomous setup.
 
     addRequirements(driveTrain);

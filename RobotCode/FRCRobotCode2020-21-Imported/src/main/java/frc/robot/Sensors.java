@@ -12,6 +12,8 @@ import frc.robot.subsystems.DriveTrain;
 public class Sensors {
 
 
+    AHRS ahrs = new AHRS(SPI.Port.kMXP);
+
 
     public Sensors(DriveTrain driveTrain, Field field) {
         //imu.setYawAxis(ADIS16448_IMU.IMUAxis.kY); //TODO: set correct yaw axis
@@ -22,7 +24,7 @@ public class Sensors {
     }
 
     
-    AHRS ahrs = new AHRS(SPI.Port.kMXP);
+
 
 
     private final DriveTrain driveTrain;
@@ -36,7 +38,7 @@ public class Sensors {
 
     //returns the angle the robot is facing if the initial angle its facing was 0
     public double getAngle() {
-        return 0; //imu.getGyroAngleY();
+        return ahrs.getAngle();
     }
 
     public void resetAngle() {

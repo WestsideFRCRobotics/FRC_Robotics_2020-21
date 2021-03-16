@@ -7,7 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.robot.Constants;
-import frc.robot.Movement;
+import frc.robot.Sensors;
 import frc.robot.subsystems.DriveTrain;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -15,7 +15,7 @@ import frc.robot.subsystems.DriveTrain;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class TurnToAngle extends PIDCommand {
   /** Creates a new TurnToAngle. */
-  public TurnToAngle(double TargetAngleDegrees, DriveTrain driveTrain, Movement movement) {
+  public TurnToAngle(double TargetAngleDegrees, DriveTrain driveTrain, Sensors movement) {
     super(
         // The controller that the command will use
         new PIDController(Constants.TURN_KP, Constants.TURN_KI, Constants.TURN_KD),
