@@ -9,9 +9,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -38,6 +40,9 @@ public class RobotContainer {
 
   private final Autonomous autonomous;
 
+
+  private final SendableChooser<Command> chooser = new SendableChooser<>();
+
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
@@ -53,6 +58,12 @@ public class RobotContainer {
     movement = new Movement(driveTrain, field);
 
     autonomous = new Autonomous(driveTrain, movement, field);
+
+
+    chooser.addOption("None", new InstantCommand());
+    chooser.addOption("square", autonomous.Square());
+
+
 
 
     configureButtonBindings(); // Configure the button bindings
@@ -76,7 +87,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
    // return m_autoCommand;
-   return autonomous.Square();
+   return chooser.getSelected();
   }
 
   public Command getTeleOpCommand (){

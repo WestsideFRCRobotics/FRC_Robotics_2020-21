@@ -29,7 +29,8 @@ public class Drive extends CommandBase {
   @Override
   public void initialize() {
 
-
+    driveTrain.PIDsetLeftMotors(leftSpeedFtPerSec);
+    driveTrain.PIDsetRightMotors(rightSpeedFtPerSec);
 
   }
 
@@ -39,7 +40,13 @@ public class Drive extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+
+    if (interrupted){
+      driveTrain.stop();
+    }
+
+  }
 
   // Returns true when the command should end.
   @Override
