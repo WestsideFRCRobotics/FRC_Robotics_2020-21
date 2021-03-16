@@ -80,6 +80,10 @@ public class RobotContainer {
   private void configureButtonBindings() {
   }
 
+  public void putDataToSmartDashboard() {
+    SmartDashboard.putNumber("angle", movement.getAngle());
+  }
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
