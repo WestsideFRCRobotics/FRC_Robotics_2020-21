@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 
 public class Drive extends CommandBase {
@@ -53,4 +54,12 @@ public class Drive extends CommandBase {
   public boolean isFinished() {
     return false;
   }
+
+
+  public static Drive DriveArc(double radiusFeet, double speedFtPerSecond, DriveTrain driveTrain) {
+    double leftSpeedFtPerSec = speedFtPerSecond * (radiusFeet - Constants.WHEEL_DISTANCE_FT/2)/radiusFeet;
+    double rightSpeedFtPerSec = speedFtPerSecond * (radiusFeet + Constants.WHEEL_DISTANCE_FT/2)/radiusFeet;
+    return new Drive(leftSpeedFtPerSec, rightSpeedFtPerSec, driveTrain);
+  }
+
 }

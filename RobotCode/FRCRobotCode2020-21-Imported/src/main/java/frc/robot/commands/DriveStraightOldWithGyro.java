@@ -10,7 +10,7 @@ import frc.robot.Constants;
 import frc.robot.Movement;
 import frc.robot.subsystems.DriveTrain;
 
-public class DriveStraight extends CommandBase {
+public class DriveStraightOldWithGyro extends CommandBase {
 
   //dependancies 
   private final DriveTrain driveTrain;
@@ -24,7 +24,7 @@ public class DriveStraight extends CommandBase {
   private final PIDController velocityController = new PIDController(Constants.DRIVE_KP, Constants.DRIVE_KI, Constants.DRIVE_KD);
 
   /** Creates a new DriveStraight. */
-  public DriveStraight(double velocityftpersec, double targetAngleDegrees, DriveTrain driveTrain, Movement movement) {
+  public DriveStraightOldWithGyro(double velocityftpersec, double targetAngleDegrees, DriveTrain driveTrain, Movement movement) {
     //We will use a seperate command to do time control. This will give us more flexibility with our autonomous setup.
 
     addRequirements(driveTrain);

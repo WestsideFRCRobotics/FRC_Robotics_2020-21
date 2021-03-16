@@ -23,22 +23,42 @@ public class Autonomous {
 
 
 
-    public Command Square() {
+    public Command SquareOld() {
 
         return new SequentialCommandGroup(
             new InstantCommand(()->movement.resetAngle()),
 
-            (new DriveStraight(3, 0, driveTrain, movement)).withTimeout(3),
+            (new DriveStraightOldWithGyro(3, 0, driveTrain, movement)).withTimeout(3),
             new TurnToAngle(90, driveTrain, movement),
 
-            (new DriveStraight(3, 0, driveTrain, movement)).withTimeout(3),
+            (new DriveStraightOldWithGyro(3, 0, driveTrain, movement)).withTimeout(3),
             new TurnToAngle(180, driveTrain, movement),
 
-            (new DriveStraight(3, 0, driveTrain, movement)).withTimeout(3),
+            (new DriveStraightOldWithGyro(3, 0, driveTrain, movement)).withTimeout(3),
             new TurnToAngle(270, driveTrain, movement),
 
-            (new DriveStraight(3, 0, driveTrain, movement)).withTimeout(3),
+            (new DriveStraightOldWithGyro(3, 0, driveTrain, movement)).withTimeout(3),
             new TurnToAngle(0, driveTrain, movement)
+
+        );
+
+    }
+
+    public Command SquareNew() {
+
+        return new SequentialCommandGroup(
+
+            (new Drive(1, 1, driveTrain)).withTimeout(3),
+            Drive.DriveArc(3, 1, driveTrain).withTimeout(Math.PI/2*3/1), //this wont work. change later. radians = velocity*time/radius. time = radians*radius/velocity
+
+            (new Drive(1, 1, driveTrain)).withTimeout(3),
+            Drive.DriveArc(3, 1, driveTrain).withTimeout(Math.PI/2*3/1),
+
+            (new Drive(1, 1, driveTrain)).withTimeout(3),
+            Drive.DriveArc(3, 1, driveTrain).withTimeout(Math.PI/2*3/1),
+
+            (new Drive(1, 1, driveTrain)).withTimeout(3),
+            Drive.DriveArc(3, 1, driveTrain).withTimeout(Math.PI/2*3/1)
 
         );
 

@@ -61,8 +61,8 @@ public class RobotContainer {
 
 
     chooser.addOption("None", new InstantCommand());
-    chooser.addOption("square", autonomous.Square());
-
+    chooser.addOption("squareOld", autonomous.SquareOld());
+    chooser.addOption("squareNew", autonomous.SquareNew());
 
 
 

@@ -43,15 +43,15 @@ public final class Constants {
     public static final double TELEOP_DRIVE_SENSITIVITY = 1;
     public static final double TELEOP_TURN_SENSITIVITY = 1;
 
-    public static final double WHEEL_DISTANCE_INCHES = 22.75;
-    public static final double WHEEL_RADIUS_INCHES = 4;
+    public static final double WHEEL_DISTANCE_FT = 22.75/12;
+    public static final double WHEEL_RADIUS_FT = 4.0/12;
 
     public static final double MAX_SPEED_FT_PER_SECOND = -1234;
 
     //Conversion Constants
     public static final double TICKSPER100MS_PER_RPM = 4096.0/600;
-    public static final double TICKSPER100MS_PER_FTPERSEC = 4096.0/(8*Math.PI)*.1; //for 8in diameter wheel
-    public static final double DISTANCE_DRIVE_FEET_PER_MAG_TICK = 8*Math.PI/4096.0;
+    public static final double TICKSPER100MS_PER_FTPERSEC = 4096.0/(8.0/12*Math.PI)*.1; //for 8in diameter wheel
+    public static final double DISTANCE_DRIVE_FEET_PER_MAG_TICK = 8.0/12*Math.PI/4096.0;
 
 
     //PID constants
