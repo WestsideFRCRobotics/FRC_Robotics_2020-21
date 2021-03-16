@@ -86,39 +86,40 @@ public class FlyWheel extends SubsystemBase {
     boolean isFlywheelOn = true;
     double threshold = 0; // Change this based on what is the minimum value in rpm for the flywheel is.
     
-    // if (Constants.TICKSPER100MS_PER_RPM > threshold)
-    // {
-    //   isFlywheelOn = true;
-    // }
-    // else
-    // {
-    //   isFlywheelOn = false;
-    // }
+    if (Constants.TICKSPER100MS_PER_RPM > threshold)
+    {
+      isFlywheelOn = true;
+    }
+    else
+    {
+      isFlywheelOn = false;
+    }
 
 
     // each button on the right pad corresponds to a zone.
 
     double green_zone_velocity = 2000;
-    if ((x_input == true) && (isFlywheelOn == true)){
+    double yellow_zone_velocity = 3000;
+    double blue_zone_velocity = 4000;
+    double red_zone_velocity = 1000;
+    if ((x_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(green_zone_velocity);
     }
 
-
-    double yellow_zone_velocity = 20;
-    if ((a_input == true) && (isFlywheelOn == true)){
+    else if ((a_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(yellow_zone_velocity);
     }
     
-    
-    double blue_zone_velocity = 20;
-    if ((b_input == true) && (isFlywheelOn == true)){
+    else if ((b_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(blue_zone_velocity);
     }
 
-
-    double red_zone_velocity = 20;
-    if ((y_input == true) && (isFlywheelOn == true)){
+    else if ((y_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(red_zone_velocity);
+    }
+    else
+    {
+      stop(); 
     }
 
     
