@@ -69,6 +69,7 @@ public class Autonomous {
     public Command test()
     {
         return new SequentialCommandGroup(
+            new InstantCommand(()->movement.resetAngle()),
             new TurnToAngle(90, driveTrain, movement)
         );
     }
