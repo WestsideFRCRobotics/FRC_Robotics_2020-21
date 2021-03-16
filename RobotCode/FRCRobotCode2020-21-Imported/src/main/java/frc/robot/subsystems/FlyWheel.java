@@ -94,11 +94,9 @@ public class FlyWheel extends SubsystemBase {
     if (x_input == true) {
       setControlledVelocity(green_zone_velocity);
     }
-
     else if (a_input == true) {
       setControlledVelocity(yellow_zone_velocity);
     }
-    
     else if (b_input == true) {
       setControlledVelocity(blue_zone_velocity);
     }
