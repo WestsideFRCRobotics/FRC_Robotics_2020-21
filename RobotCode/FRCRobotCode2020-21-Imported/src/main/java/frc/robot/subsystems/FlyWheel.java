@@ -83,17 +83,17 @@ public class FlyWheel extends SubsystemBase {
   
   public void flywheelUpToSpeedteleop(boolean y_input, boolean x_input, boolean a_input, boolean b_input)
   {
-    boolean isFlywheelOn = true;
+    boolean isFlywheelOn = false;
     double threshold = 0; // Change this based on what is the minimum value in rpm for the flywheel is.
     
-    if (Constants.TICKSPER100MS_PER_RPM > threshold)
-    {
-      isFlywheelOn = true;
-    }
-    else
-    {
-      isFlywheelOn = false;
-    }
+    // if (Constants.TICKSPER100MS_PER_RPM > threshold)
+    // {
+    //   isFlywheelOn = true;
+    // }
+    // else
+    // {
+    //   isFlywheelOn = false;
+    // }
 
 
     // each button on the right pad corresponds to a zone.
@@ -102,24 +102,31 @@ public class FlyWheel extends SubsystemBase {
     double yellow_zone_velocity = 3000;
     double blue_zone_velocity = 4000;
     double red_zone_velocity = 1000;
+
+
     if ((x_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(green_zone_velocity);
+      isFlywheelOn = true;
     }
 
     else if ((a_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(yellow_zone_velocity);
+      isFlywheelOn = true;
     }
     
     else if ((b_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(blue_zone_velocity);
+      isFlywheelOn = true;
     }
 
     else if ((y_input == true) && (isFlywheelOn == false)){
       setControlledVelocity(red_zone_velocity);
+      isFlywheelOn = true;
     }
-    else
+    else if (((x_input == true) || (a_input == true) || (b_input == true) || (y_input == true)) && (isFlywheelOn == true))
     {
       stop(); 
+      isFlywheelOn = false;
     }
 
     
