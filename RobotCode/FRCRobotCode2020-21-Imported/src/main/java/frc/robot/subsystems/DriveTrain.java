@@ -67,6 +67,16 @@ public class DriveTrain extends SubsystemBase {
     LeftMotor1.setSensorPhase(false); //TODO: make sure sensor phase is correct
     RightMotor1.setSensorPhase(false);
 
+    LeftMotor1.config_kP(0, Constants.DRIVE_KP);
+    LeftMotor1.config_kI(0, Constants.DRIVE_KI); 
+    LeftMotor1.config_kD(0, Constants.DRIVE_KD); 
+    LeftMotor1.config_kF(0, Constants.DRIVE_KF);
+
+    RightMotor1.config_kP(0, Constants.DRIVE_KP);
+    RightMotor1.config_kI(0, Constants.DRIVE_KI); 
+    RightMotor1.config_kD(0, Constants.DRIVE_KD); 
+    RightMotor1.config_kF(0, Constants.DRIVE_KF);
+
 
   }
 
@@ -87,6 +97,16 @@ public class DriveTrain extends SubsystemBase {
       RIGHT.set(ControlMode.PercentOutput, percent);
     }
   }
+
+  public void PIDsetRightMotors(double WheelRPM){
+    RIGHT.set(ControlMode.Velocity, WheelRPM*Constants.TICKSPER100MS_PER_RPM);
+  }
+
+  public void PIDsetLeftMotors(double WheelRPM){
+    LEFT.set(ControlMode.Velocity, WheelRPM*Constants.TICKSPER100MS_PER_RPM);
+  }
+
+
 
   public void drive(double speed, double turnH) {
     setRightMotors(speed - turnH);

@@ -43,6 +43,10 @@ public final class Constants {
     public static final double TELEOP_DRIVE_SENSITIVITY = 1;
     public static final double TELEOP_TURN_SENSITIVITY = 1;
 
+    public static final double WHEEL_DISTANCE_INCHES = 22.75;
+    public static final double WHEEL_RADIUS_INCHES = 4;
+
+    public static final double MAX_SPEED_FT_PER_SECOND = -1234;
 
     //Conversion Constants
     public static final double TICKSPER100MS_PER_RPM = 4096.0/600;
@@ -55,7 +59,7 @@ public final class Constants {
 
     public static final double TURN_KP=-1234, TURN_KI=-1234, TURN_KD=-1234, DEGREE_TOLERANCE=-1234, TURN_RATE_TOLERANCE=-1234;
 
-    public static final double DRIVE_KP=-1234, DRIVE_KI=-1234, DRIVE_KD=-1234;
+    public static final double DRIVE_KP=-1234, DRIVE_KI=-1234, DRIVE_KD=-1234, DRIVE_KF=-1234;
 
     
 
