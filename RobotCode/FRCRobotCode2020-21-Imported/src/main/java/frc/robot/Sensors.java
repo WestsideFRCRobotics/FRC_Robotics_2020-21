@@ -12,8 +12,13 @@ import frc.robot.subsystems.DriveTrain;
 public class Sensors {
 
 
-    AHRS ahrs = new AHRS(SPI.Port.kMXP);
+    private AHRS ahrs = new AHRS(SPI.Port.kMXP);
+    private double relativeAngleBase = 0;  //if you want to turn 90 degrees, first record what angle the robots facing, than compare the new angle to the old one.
 
+   
+    private final DriveTrain driveTrain;
+
+    private final Ultrasonic front_center_ultrasonic = new Ultrasonic(Constants.FRONT_CENTER_ULTRASONIC_DIO[0], Constants.FRONT_CENTER_ULTRASONIC_DIO[1]);
 
     public Sensors(DriveTrain driveTrain, Field field) {
         //imu.setYawAxis(ADIS16448_IMU.IMUAxis.kY); //TODO: set correct yaw axis
@@ -23,29 +28,21 @@ public class Sensors {
 
     }
 
-    
-
-
-
-    private final DriveTrain driveTrain;
-
-    //private final ADIS16448_IMU imu = new ADIS16448_IMU();
-
-    //Gyro gyro = new ADXRS450_Gyro();
-    //TODO: figure out if the IMU and gyro use the same port
-
-    private final Ultrasonic front_center_ultrasonic = new Ultrasonic(Constants.FRONT_CENTER_ULTRASONIC_DIO[0], Constants.FRONT_CENTER_ULTRASONIC_DIO[1]);
-
     //returns the angle the robot is facing if the initial angle its facing was 0
-    public double getAngle() {
+    public double getAbsoluteAngle() {
         return ahrs.getAngle();
     }
-
-    public void resetAngle() {
+    public void recalibrateGyroscope() {
         ahrs.calibrate();
     }
-    public void resetAngle(double angle) {
-
+    public double getRelativeAngle() {
+        return ahrs.getAngle() - relativeAngleBase;
+    }
+    public void resetRelativeBaseAngle() { //sets the relative angle to the current angle. should be called at the begining of any autonomous routine that uses relative angles
+        relativeAngleBase = ahrs.getAngle(); 
+    }
+    public double getRelativeBaseAngle() {
+        return relativeAngleBase;
     }
 
     public double getFrontCenterUltrasonicDistance() {

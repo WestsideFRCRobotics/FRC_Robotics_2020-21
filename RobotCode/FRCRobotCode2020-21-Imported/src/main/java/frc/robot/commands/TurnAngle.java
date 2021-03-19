@@ -13,14 +13,18 @@ import frc.robot.subsystems.DriveTrain;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class TurnToAngle extends PIDCommand {
+public class TurnAngle extends PIDCommand {
+
+
+  private Sensors movement;
+
   /** Creates a new TurnToAngle. */
-  public TurnToAngle(double TargetAngleDegrees, DriveTrain driveTrain, Sensors movement) {
+  public TurnAngle(double TargetAngleDegrees, DriveTrain driveTrain, Sensors movement) {
     super(
         // The controller that the command will use
         new PIDController(Constants.TURN_KP, Constants.TURN_KI, Constants.TURN_KD),
         // This should return the measurement
-        () -> movement.getAngle(),  //lambda expression -- sends an ENTIRE function
+        () -> movement.getRelativeAngle(),  //lambda expression -- sends an ENTIRE function
         // This should return the setpoint (can also be a constant)
         TargetAngleDegrees,
         // This uses the output
@@ -33,8 +37,18 @@ public class TurnToAngle extends PIDCommand {
     getController().enableContinuousInput(-180, 180);
     getController().setTolerance(Constants.DEGREE_TOLERANCE, Constants.TURN_RATE_TOLERANCE);
     
+    this.movement = movement;
 
   }
+
+  @Override
+  public void initialize() {
+    m_controller.reset(); //copied from PIDCommand class
+
+    movement.resetRelativeBaseAngle();
+
+  }
+
 
   // Returns true when the command should end.
   @Override

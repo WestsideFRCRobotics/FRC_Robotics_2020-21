@@ -81,7 +81,8 @@ public class RobotContainer {
   }
 
   public void putDataToSmartDashboard() {
-    SmartDashboard.putNumber("angle", movement.getAngle());
+    SmartDashboard.putNumber("Absolute Angle", movement.getAbsoluteAngle());
+    SmartDashboard.putNumber("Relative Angle", movement.getRelativeAngle());
     SmartDashboard.putNumber("right wheel distance", driveTrain.getRightDistanceTraveled());
     SmartDashboard.putNumber("left wheel distance", driveTrain.getLeftDistanceTraveled());
   }

@@ -27,19 +27,17 @@ public class Autonomous {
     public Command SquareOld() {
 
         return new SequentialCommandGroup(
-            new InstantCommand(()->movement.resetAngle()),
+            (new DriveStraightOldWithGyro(3, driveTrain, movement)).withTimeout(3),
+            new TurnAngle(90, driveTrain, movement),
 
-            (new DriveStraightOldWithGyro(3, 0, driveTrain, movement)).withTimeout(3),
-            new TurnToAngle(90, driveTrain, movement),
+            (new DriveStraightOldWithGyro(3, driveTrain, movement)).withTimeout(3),
+            new TurnAngle(90, driveTrain, movement),
 
-            (new DriveStraightOldWithGyro(3, 0, driveTrain, movement)).withTimeout(3),
-            new TurnToAngle(180, driveTrain, movement),
+            (new DriveStraightOldWithGyro(3, driveTrain, movement)).withTimeout(3),
+            new TurnAngle(90, driveTrain, movement),
 
-            (new DriveStraightOldWithGyro(3, 0, driveTrain, movement)).withTimeout(3),
-            new TurnToAngle(270, driveTrain, movement),
-
-            (new DriveStraightOldWithGyro(3, 0, driveTrain, movement)).withTimeout(3),
-            new TurnToAngle(0, driveTrain, movement)
+            (new DriveStraightOldWithGyro(3, driveTrain, movement)).withTimeout(3),
+            new TurnAngle(90, driveTrain, movement)
 
         );
 
@@ -69,8 +67,8 @@ public class Autonomous {
     public Command test()
     {
         return new SequentialCommandGroup(
-            new InstantCommand(()->movement.resetAngle()),
-            new TurnToAngle(90, driveTrain, movement)
+            //new InstantCommand(()->movement.resetAngle()),  
+            new TurnAngle(90, driveTrain, movement) //TODO: work out resetAngle and calibrate
         );
     }
 

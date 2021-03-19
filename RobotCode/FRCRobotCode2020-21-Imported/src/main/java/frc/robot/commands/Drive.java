@@ -58,9 +58,13 @@ public class Drive extends CommandBase {
 
   //positive radius is on right side. Negative radius is on left side.
   public static Drive DriveArc(double radiusFeet, double speedFtPerSecond, DriveTrain driveTrain) {
+
     double leftSpeedFtPerSec = speedFtPerSecond * (radiusFeet - Constants.WHEEL_DISTANCE_FT/2)/radiusFeet;
     double rightSpeedFtPerSec = speedFtPerSecond * (radiusFeet + Constants.WHEEL_DISTANCE_FT/2)/radiusFeet;
     return new Drive(leftSpeedFtPerSec, rightSpeedFtPerSec, driveTrain);
+
   }
+
+  
 
 }

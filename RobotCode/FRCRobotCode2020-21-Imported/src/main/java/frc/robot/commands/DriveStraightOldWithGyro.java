@@ -24,7 +24,7 @@ public class DriveStraightOldWithGyro extends CommandBase {
   private final PIDController velocityController = new PIDController(Constants.DRIVE_KP, Constants.DRIVE_KI, Constants.DRIVE_KD);
 
   /** Creates a new DriveStraight. */
-  public DriveStraightOldWithGyro(double velocityftpersec, double targetAngleDegrees, DriveTrain driveTrain, Sensors movement) {
+  public DriveStraightOldWithGyro(double velocityftpersec, DriveTrain driveTrain, Sensors movement) {
     //We will use a seperate command to do time control. This will give us more flexibility with our autonomous setup.
 
     addRequirements(driveTrain);
@@ -32,7 +32,6 @@ public class DriveStraightOldWithGyro extends CommandBase {
     this.movement = movement;
 
     // we will run our PID controller in ticksper100ms units from the encoder
-    angleController.setSetpoint(targetAngleDegrees);
 
     velocityController.setSetpoint(velocityftpersec*Constants.TICKSPER100MS_PER_FTPERSEC);
     
@@ -40,7 +39,9 @@ public class DriveStraightOldWithGyro extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    angleController.setSetpoint(movement.getAbsoluteAngle());
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -49,7 +50,7 @@ public class DriveStraightOldWithGyro extends CommandBase {
     //It's honestly just this simple. This basicly does exactly the same thing as the PIDController, but we can see what's going on behind the scenes.
     driveTrain.drive(
       velocityController.calculate(driveTrain.getAverageTicksPer100ms()),
-      angleController.calculate(movement.getAngle())
+      angleController.calculate(movement.getAbsoluteAngle())
     );
 
 

@@ -98,6 +98,7 @@ public class DriveTrain extends SubsystemBase {
     }
   }
 
+  //TODO: add dead zones
   public void PIDsetRightMotors(double WheelRPM){
     RIGHT.set(ControlMode.Velocity, WheelRPM*Constants.TICKSPER100MS_PER_RPM);
   }
