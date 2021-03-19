@@ -41,6 +41,9 @@ public class Sensors {
     public void resetRelativeBaseAngle() { //sets the relative angle to the current angle. should be called at the begining of any autonomous routine that uses relative angles
         relativeAngleBase = ahrs.getAngle(); 
     }
+    public boolean isGyroCalibrating() {
+        return ahrs.isCalibrating();
+    }
     public double getRelativeBaseAngle() {
         return relativeAngleBase;
     }
