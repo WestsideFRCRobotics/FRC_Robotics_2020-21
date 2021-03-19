@@ -25,21 +25,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain driveTrain;
-
   private final FlyWheel flyWheel;
+  private final Indexer indexer;
 
-  private final TeleOp teleOp;
   //Takes input from the XboxController and changes it into output for the DriveTrain
-
   private final XboxController controller;
 
-
+  private final Autonomous autonomous;
+  private final TeleOp teleOp;
 
   private final Sensors movement;
 
   private final Field field;
-
-  private final Autonomous autonomous;
 
 
   private final SendableChooser<Command> chooser = new SendableChooser<>();
@@ -51,9 +48,10 @@ public class RobotContainer {
     
     driveTrain = new DriveTrain();
     flyWheel = new FlyWheel();
+    indexer = new Indexer();
 
     controller = new XboxController(Constants.CONTROLLER_PORT);
-    teleOp = new TeleOp(driveTrain, controller, flyWheel);
+    teleOp = new TeleOp(controller, driveTrain, flyWheel, indexer);
 
     field = new Field();
     movement = new Sensors(driveTrain, field);

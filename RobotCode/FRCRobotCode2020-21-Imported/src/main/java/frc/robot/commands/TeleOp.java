@@ -21,16 +21,18 @@ public class TeleOp extends CommandBase {
   private DriveTrain driveTrain;
   private XboxController controller;
   private FlyWheel flywheel;
+  private Indexer indexer;
   /**
    * Creates a new UserControlDrive.
    */
-  public TeleOp(DriveTrain driveTrain, XboxController xboxController, FlyWheel flywheel) {
+  public TeleOp(XboxController xboxController, DriveTrain driveTrain, FlyWheel flywheel, Indexer indexer) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(driveTrain, flywheel);
     //^^^ adding this line of code makes sure we don't ever have two commands using the same subsystem at one time
 
     this.driveTrain = driveTrain; //only passing a reference. The object is the same as in RobotContainer.
     this.flywheel = flywheel;
+    this.indexer = indexer;
     
     controller = xboxController;
 
@@ -56,6 +58,14 @@ public class TeleOp extends CommandBase {
     driveTrain.drive(speed, turnH);
 
     flywheel.flywheelUpToSpeedteleop(controller.getYButton(), controller.getXButton(), controller.getAButton(), controller.getBButton());
+
+    if(controller.getBumperPressed(Hand.kLeft)) {
+      indexer.startFeed();
+    }
+    if(controller.getBumperReleased(Hand.kLeft)) {
+      indexer.stopFeed();
+    }
+
 
   }
 
