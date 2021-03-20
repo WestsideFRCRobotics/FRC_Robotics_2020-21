@@ -52,14 +52,22 @@ public final class Constants {
 
     public static final double MAX_SPEED_FT_PER_SECOND = -1234;
 
+    //Hood constants
+    public static final double MIN_HOOD_ANGLE = 30;
+    public static final double MAX_HOOD_ANGLE = 70;
+
     //Conversion Constants
     public static final double TICKSPER100MS_PER_RPM = 4096.0/600;
     public static final double TICKSPER100MS_PER_FTPERSEC = 4096.0/(8.0/12*Math.PI)*.1; //for 8in diameter wheel
     public static final double DISTANCE_DRIVE_FEET_PER_MAG_TICK = 8.0/12*Math.PI/4096.0;
+    public static final double MAG_TICKS_PER_HOOD_DEGREE = 4096.0/2.0/360.0; 
+        //note that hood encoder is on a different shaft than the hood so a gear ratio of 2 must be taken into account
 
 
     //PID constants
     public static final double FLYWHEEL_KP= .1, FLYWHEEL_KI=0, FLYWHEEL_KD=.02, FLYWHEEL_KF=.1;
+
+    public static final double HOOD_KP = .1, HOOD_KI = .1, HOOD_KD = .1, HOOD_KF = 0;
 
     public static final double TURN_KP=0.5, TURN_KI=0, TURN_KD=0, DEGREE_TOLERANCE=1, TURN_RATE_TOLERANCE=1;
 

@@ -27,6 +27,7 @@ public class RobotContainer {
   private final DriveTrain driveTrain;
   private final FlyWheel flyWheel;
   private final Indexer indexer;
+  private final Hood hood;
 
   //Takes input from the XboxController and changes it into output for the DriveTrain
   private final XboxController controller;
@@ -49,9 +50,10 @@ public class RobotContainer {
     driveTrain = new DriveTrain();
     flyWheel = new FlyWheel();
     indexer = new Indexer();
+    hood = new Hood();
 
     controller = new XboxController(Constants.CONTROLLER_PORT);
-    teleOp = new TeleOp(controller, driveTrain, flyWheel, indexer);
+    teleOp = new TeleOp(controller, driveTrain, flyWheel, indexer, hood);
 
     field = new Field();
     movement = new Sensors(driveTrain, field);
@@ -83,6 +85,7 @@ public class RobotContainer {
     SmartDashboard.putNumber("Relative Angle", movement.getRelativeAngle());
     SmartDashboard.putNumber("right wheel distance", driveTrain.getRightDistanceTraveled());
     SmartDashboard.putNumber("left wheel distance", driveTrain.getLeftDistanceTraveled());
+    SmartDashboard.putNumber("hood angle", hood.getHoodAngle());
   }
 
 

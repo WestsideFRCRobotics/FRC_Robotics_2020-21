@@ -18,21 +18,25 @@ Allows the driver to move the robot with the controller
 */
 
 public class TeleOp extends CommandBase {
-  private DriveTrain driveTrain;
+
   private XboxController controller;
+
+  private DriveTrain driveTrain;
   private FlyWheel flywheel;
   private Indexer indexer;
+  private Hood hood;
   /**
    * Creates a new UserControlDrive.
    */
-  public TeleOp(XboxController xboxController, DriveTrain driveTrain, FlyWheel flywheel, Indexer indexer) {
+  public TeleOp(XboxController xboxController, DriveTrain driveTrain, FlyWheel flywheel, Indexer indexer, Hood hood) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(driveTrain, flywheel);
+    addRequirements(driveTrain, flywheel, indexer, hood);
     //^^^ adding this line of code makes sure we don't ever have two commands using the same subsystem at one time
 
     this.driveTrain = driveTrain; //only passing a reference. The object is the same as in RobotContainer.
     this.flywheel = flywheel;
     this.indexer = indexer;
+    this.hood = hood;
     
     controller = xboxController;
 
@@ -59,6 +63,7 @@ public class TeleOp extends CommandBase {
 
     flywheel.flywheelUpToSpeedteleop(controller.getYButton(), controller.getXButton(), controller.getAButton(), controller.getBButton());
 
+    //control indexer
     if(controller.getBumperPressed(Hand.kLeft)) {
       indexer.startFeed();
     }
@@ -66,6 +71,12 @@ public class TeleOp extends CommandBase {
       indexer.stopFeed();
     }
 
+    //control hood
+    switch(controller.getPOV()){
+      case -1: hood.stopHood(); break;
+      case 0: hood.increaseHoodAngle(); break; //note: could also use increase hood angle instead.
+      case 180: hood.decreaseHoodAngle(); break;
+    } 
 
   }
 
