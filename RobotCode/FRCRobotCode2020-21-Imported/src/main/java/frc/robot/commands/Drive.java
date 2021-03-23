@@ -4,8 +4,11 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
+import frc.robot.Sensors;
 import frc.robot.subsystems.DriveTrain;
 
 public class Drive extends CommandBase {
@@ -63,6 +66,16 @@ public class Drive extends CommandBase {
     double rightSpeedFtPerSec = speedFtPerSecond * (radiusFeet + Constants.WHEEL_DISTANCE_FT/2)/radiusFeet;
     return new Drive(leftSpeedFtPerSec, rightSpeedFtPerSec, driveTrain);
 
+  }
+
+  //returns a drive arc command that terminates when the robot reaches a certain angle
+  //TODO: ensure the robot never misses the target angle
+  //TODO: allow robot to go multiple angles
+  public static Command DriveArc(double radiusFeet, double speedFtPerSecond, double angleToTurn, DriveTrain driveTrain, Sensors sensors) {
+    angleToTurn = (angleToTurn+180)%360-180; //make sure angle is between -180 and 180 degrees
+    return DriveArc(radiusFeet, speedFtPerSecond, driveTrain)
+        .beforeStarting(sensors::resetRelativeBaseAngle)
+        .withInterrupt(()->(Math.abs(sensors.getRelativeAngle()-angleToTurn)<1));
   }
 
   
