@@ -71,11 +71,18 @@ public class Drive extends CommandBase {
   //returns a drive arc command that terminates when the robot reaches a certain angle
   //TODO: ensure the robot never misses the target angle
   //TODO: allow robot to go multiple angles
-  public static Command DriveArc(double radiusFeet, double speedFtPerSecond, double angleToTurn, DriveTrain driveTrain, Sensors sensors) {
+  public static Command DriveArcWithAngle(double radiusFeet, double speedFtPerSecond, double angleToTurn, DriveTrain driveTrain, Sensors sensors) {
     final double ModAngleToTurn = (angleToTurn+180)%360-180; //make sure angle is between -180 and 180 degrees
     return DriveArc(radiusFeet, speedFtPerSecond, driveTrain)
         .beforeStarting(sensors::resetRelativeBaseAngle)
         .withInterrupt(()->(Math.abs(sensors.getRelativeAngle()-ModAngleToTurn)<1));
+  }
+
+  
+  public static Command DriveDistance(double speedFtPerSecond, double distanceFt, DriveTrain driveTrain) {
+    return new Drive(speedFtPerSecond, speedFtPerSecond, driveTrain)
+        .beforeStarting(driveTrain::resetEncoderPositions)
+        .withInterrupt(()->(driveTrain.getAverageDistanceTraveled()>=distanceFt));
   }
 
   
