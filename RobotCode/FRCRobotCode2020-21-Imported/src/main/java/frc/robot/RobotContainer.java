@@ -69,6 +69,9 @@ public class RobotContainer {
 
 
     configureButtonBindings(); // Configure the button bindings
+
+    hood.calibrate().schedule();
+
   }
 
   /**
@@ -86,6 +89,8 @@ public class RobotContainer {
     SmartDashboard.putNumber("right wheel distance", driveTrain.getRightDistanceTraveled());
     SmartDashboard.putNumber("left wheel distance", driveTrain.getLeftDistanceTraveled());
     SmartDashboard.putNumber("hood angle", hood.getHoodAngle());
+    SmartDashboard.putBoolean("limit", hood.getLimitSwitch());
+    SmartDashboard.putBoolean("is calibrated", hood.isCalibrated());
   }
 
 
@@ -102,5 +107,9 @@ public class RobotContainer {
 
   public Command getTeleOpCommand (){
     return teleOp;
+  }
+
+  public Command calibrateHood() {
+    return hood.calibrate();
   }
 }

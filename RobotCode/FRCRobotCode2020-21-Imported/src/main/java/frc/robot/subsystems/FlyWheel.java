@@ -88,7 +88,7 @@ public class FlyWheel extends SubsystemBase {
 
     double green_zone_velocity = 2000;
     double yellow_zone_velocity = 3000;
-    double blue_zone_velocity = 4000;
+    double blue_zone_velocity = 10000;
 
 
     if (x_input == true) {

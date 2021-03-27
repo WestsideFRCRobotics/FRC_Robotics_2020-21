@@ -54,11 +54,15 @@ public class Hood extends SubsystemBase {
       hoodMotor.set(ControlMode.PercentOutput, .4);
   }
   public void decreaseHoodAngle() {
-    if (!limitSwitch.get())
+    if (limitSwitch.get())
       hoodMotor.set(ControlMode.PercentOutput, -.4);
   }
   public void stopHood() {
     hoodMotor.neutralOutput();
+  }
+
+  public boolean getLimitSwitch(){
+    return !limitSwitch.get();
   }
 
   public void setHoodToAngle(double angle) {
@@ -80,8 +84,8 @@ public class Hood extends SubsystemBase {
   //this command runs a calibration sequence that sets th
   public Command calibrate() {
     return new SequentialCommandGroup(
-      new InstantCommand(()->hoodMotor.set(ControlMode.PercentOutput, -.5)), //run the motor backwards
-      new WaitUntilCommand(()->limitSwitch.get()), //wait until limit switch is hit
+      new InstantCommand(()->hoodMotor.set(ControlMode.PercentOutput, -5)), //run the motor backwards
+      new WaitUntilCommand(()->(!limitSwitch.get())), //wait until limit switch is hit
       new InstantCommand(()->{ //set hood angle to the minimum position
         hoodMotor.neutralOutput();
         hoodMotor.setSelectedSensorPosition(Constants.MIN_HOOD_ANGLE*Constants.MAG_TICKS_PER_HOOD_DEGREE);
@@ -95,6 +99,6 @@ public class Hood extends SubsystemBase {
   @Override
   public void periodic() {
     //limits the hood angle so you can't move it too far up or down
-    if(limitSwitch.get() || getHoodAngle()>Constants.MAX_HOOD_ANGLE) hoodMotor.neutralOutput();
+    if(!limitSwitch.get() || getHoodAngle()>Constants.MAX_HOOD_ANGLE) hoodMotor.neutralOutput();
   }
 }

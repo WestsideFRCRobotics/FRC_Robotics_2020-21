@@ -14,7 +14,7 @@ import frc.robot.Constants;
 public class Indexer extends SubsystemBase {
 
   private VictorSPX feederMotor = new VictorSPX(Constants.SHOOTER_FEEDER);
-  private VictorSPX indexerMotor = new VictorSPX(Constants.INDEXER);
+  //private VictorSPX indexerMotor = new VictorSPX(Constants.INDEXER);
 
   private final double INDEXER_POWER = .2;
   private final double FEEDER_POWER = .5;
@@ -26,13 +26,13 @@ public class Indexer extends SubsystemBase {
   }
 
   public void startFeed() {
-    feederMotor.set(ControlMode.PercentOutput, FEEDER_POWER);
-    indexerMotor.set(ControlMode.PercentOutput, INDEXER_POWER);
+    feederMotor.set(ControlMode.PercentOutput, -FEEDER_POWER);
+    //indexerMotor.set(ControlMode.PercentOutput, -INDEXER_POWER);
   }
 
   public void stopFeed() {
     feederMotor.neutralOutput();
-    indexerMotor.neutralOutput();
+    //indexerMotor.neutralOutput();
   }
 
 

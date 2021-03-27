@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.subsystems.*;
 
@@ -51,15 +52,25 @@ public class TeleOp extends CommandBase {
   @Override
   public void execute() {
     
-    double turnH = Constants.TELEOP_TURN_SENSITIVITY  *  controller.getX(Hand.kLeft);
-    double speed = Constants.TELEOP_DRIVE_SENSITIVITY  *  controller.getY(Hand.kLeft);
+    //double turnH = Constants.TELEOP_TURN_SENSITIVITY  *  controller.getX(Hand.kLeft);
+    //double speed = Constants.TELEOP_DRIVE_SENSITIVITY  *  controller.getY(Hand.kLeft);
     //from what I reseached, the above code should work. If not, we still have the old code below.
     //double turnH = Constants.TELEOP_TURN_SENSITIVITY  *  controller.getRawAxis(Constants.LEFT_X_AXIS);
     //double speed = Constants.TELEOP_DRIVE_SENSITIVITY  *  controller.getRawAxis(Constants.LEFT_Y_AXIS);
 
     //another thing to think about is usi ng non-linear input to speed mappings (S-curve, stepping, etc.)
 
-    driveTrain.drive(speed, turnH);
+    //driveTrain.drive(speed, turnH);
+
+
+    double driveLeft = Constants.TELEOP_DRIVE_SENSITIVITY * controller.getY(Hand.kLeft);
+    double driveRight = Constants.TELEOP_DRIVE_SENSITIVITY * controller.getY(Hand.kRight);
+
+    driveTrain.setLeftMotors(driveLeft);
+    driveTrain.setRightMotors(driveRight);
+
+
+
 
     flywheel.flywheelUpToSpeedteleop(controller.getYButton(), controller.getXButton(), controller.getAButton(), controller.getBButton());
 
@@ -76,7 +87,8 @@ public class TeleOp extends CommandBase {
       case -1: hood.stopHood(); break;
       case 0: hood.increaseHoodAngle(); break; //note: could also use increase hood angle instead.
       case 180: hood.decreaseHoodAngle(); break;
-    } 
+    }
+    SmartDashboard.putNumber("POV", controller.getPOV());
 
   }
 

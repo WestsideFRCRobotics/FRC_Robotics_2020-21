@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 //Robot Code for Westside FRC for the 2020-2021 competition
 
@@ -34,6 +35,8 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+
+
 
   }
 
@@ -93,8 +96,14 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+
+    //m_robotContainer.calibrateHood().schedule();
+
     Command  teleOp = m_robotContainer.getTeleOpCommand();
-    teleOp.schedule();
+    (new SequentialCommandGroup(
+      m_robotContainer.calibrateHood(),
+      teleOp
+    )).schedule();
 
   }
 
