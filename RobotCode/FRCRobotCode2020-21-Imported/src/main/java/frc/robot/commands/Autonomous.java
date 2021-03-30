@@ -72,5 +72,33 @@ public class Autonomous {
         );
     }
 
+
+    private final double DRIVE_SPEED = 2, TURN_SPEED = 1;
+
+    public Command barrelRacing() {
+        return new SequentialCommandGroup(
+
+            Drive.DriveDistance(DRIVE_SPEED, 10, driveTrain),
+
+            Drive.DriveArcWithAngle(30.0/12, TURN_SPEED, 180, driveTrain, movement),
+            Drive.DriveArcWithAngle(30.0/12, TURN_SPEED, 180, driveTrain, movement),
+
+            Drive.DriveDistance(DRIVE_SPEED, 90.0/12, driveTrain),
+
+            Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -180, driveTrain, movement),
+            Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -134.64, driveTrain, movement),
+
+            Drive.DriveDistance(DRIVE_SPEED, 84.95/12, driveTrain),
+
+            Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -180, driveTrain, movement),
+            Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -45.16, driveTrain, movement),
+
+            Drive.DriveDistance(DRIVE_SPEED, 260.0/12, driveTrain),
+            
+            new StopAhead(10.0/12, driveTrain)
+
+        );
+    }
+
     
 }
