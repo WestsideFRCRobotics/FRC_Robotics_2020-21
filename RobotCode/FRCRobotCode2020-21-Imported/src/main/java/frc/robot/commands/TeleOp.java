@@ -52,22 +52,22 @@ public class TeleOp extends CommandBase {
   @Override
   public void execute() {
     
-    //double turnH = Constants.TELEOP_TURN_SENSITIVITY  *  controller.getX(Hand.kLeft);
-    //double speed = Constants.TELEOP_DRIVE_SENSITIVITY  *  controller.getY(Hand.kLeft);
+    double turnH = Constants.TELEOP_TURN_SENSITIVITY  *  controller.getX(Hand.kRight);
+    double speed = Constants.TELEOP_DRIVE_SENSITIVITY  *  controller.getY(Hand.kLeft);
     //from what I reseached, the above code should work. If not, we still have the old code below.
     //double turnH = Constants.TELEOP_TURN_SENSITIVITY  *  controller.getRawAxis(Constants.LEFT_X_AXIS);
     //double speed = Constants.TELEOP_DRIVE_SENSITIVITY  *  controller.getRawAxis(Constants.LEFT_Y_AXIS);
 
     //another thing to think about is usi ng non-linear input to speed mappings (S-curve, stepping, etc.)
 
-    //driveTrain.drive(speed, turnH);
+    driveTrain.drive(speed, turnH);
 
 
-    double driveLeft = Constants.TELEOP_DRIVE_SENSITIVITY * controller.getY(Hand.kLeft);
-    double driveRight = Constants.TELEOP_DRIVE_SENSITIVITY * controller.getY(Hand.kRight);
+    // double driveLeft = Constants.TELEOP_DRIVE_SENSITIVITY * controller.getY(Hand.kLeft);
+    // double driveRight = Constants.TELEOP_DRIVE_SENSITIVITY * controller.getY(Hand.kRight);
 
-    driveTrain.setLeftMotors(driveLeft);
-    driveTrain.setRightMotors(driveRight);
+    // driveTrain.setLeftMotors(driveLeft);
+    // driveTrain.setRightMotors(driveRight);
 
 
 

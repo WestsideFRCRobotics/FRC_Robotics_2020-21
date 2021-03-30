@@ -45,7 +45,7 @@ public final class Constants {
 
     //Drive Constants
     public static final double TELEOP_DRIVE_SENSITIVITY = 1;
-    public static final double TELEOP_TURN_SENSITIVITY = 1;
+    public static final double TELEOP_TURN_SENSITIVITY = -.5;
 
     public static final double WHEEL_DISTANCE_FT = 22.75/12;
     public static final double WHEEL_RADIUS_FT = 4.0/12;

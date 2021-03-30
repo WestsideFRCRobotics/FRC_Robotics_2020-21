@@ -100,10 +100,7 @@ public class Robot extends TimedRobot {
     //m_robotContainer.calibrateHood().schedule();
 
     Command  teleOp = m_robotContainer.getTeleOpCommand();
-    (new SequentialCommandGroup(
-      m_robotContainer.calibrateHood(),
-      teleOp
-    )).schedule();
+    teleOp.schedule();
 
   }
 
