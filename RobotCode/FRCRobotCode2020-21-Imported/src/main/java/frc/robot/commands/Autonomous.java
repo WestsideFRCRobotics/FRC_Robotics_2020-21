@@ -94,9 +94,8 @@ public class Autonomous {
             Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -45.16, driveTrain, movement),
 
             Drive.DriveDistance(DRIVE_SPEED, 260.0/12, driveTrain),
-            Drive.DriveDistance(.1, 260.0/12, driveTrain),
-
-            new InstantCommand(()->driveTrain.stop())
+            
+            new StopAhead(10.0/12, driveTrain)
 
         );
     }

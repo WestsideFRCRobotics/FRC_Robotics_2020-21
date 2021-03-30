@@ -73,6 +73,8 @@ public final class Constants {
 
     public static final double DRIVE_KP=-1234, DRIVE_KI=-1234, DRIVE_KD=-1234, DRIVE_KF=-1234;
 
+    public static final double STOP_KP=1, STOP_KI=0, STOP_KD=1, POS_TOLERANCE = .1, SPEED_TOLERANCE = 1;
+
     
 
 }
