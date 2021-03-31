@@ -100,5 +100,35 @@ public class Autonomous {
         );
     }
 
+    public Command slalom(){
+        return new SequentialCommandGroup(
+
+            Drive.DriveDistance(DRIVE_SPEED, 22.47/12, driveTrain),
+
+            Drive.DriveArcWithAngle(-28.0/12, TURN_SPEED, -59.27, driveTrain, movement),
+            Drive.DriveDistance(DRIVE_SPEED, 37.95/12, driveTrain),
+            Drive.DriveArcWithAngle(28.0/12, TURN_SPEED, 59.27, driveTrain, movement),
+
+            Drive.DriveDistance(DRIVE_SPEED, 120/12, driveTrain),
+
+
+            Drive.DriveArcWithAngle(30.0/12, TURN_SPEED, 90, driveTrain, movement),
+
+            Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -180, driveTrain, movement),
+            Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -180, driveTrain, movement),
+
+            Drive.DriveArcWithAngle(30.0/12, TURN_SPEED, 90, driveTrain, movement),
+
+            Drive.DriveDistance(DRIVE_SPEED, 260.0/12, driveTrain),
+
+            Drive.DriveArcWithAngle(28.0/12, TURN_SPEED, 59.27, driveTrain, movement),
+            Drive.DriveDistance(DRIVE_SPEED, 37.95/12, driveTrain),
+            Drive.DriveArcWithAngle(-28.0/12, TURN_SPEED, -59.27, driveTrain, movement),
+            
+            new StopAhead(22.47/12, driveTrain)
+
+        );
+    }
+
     
 }
