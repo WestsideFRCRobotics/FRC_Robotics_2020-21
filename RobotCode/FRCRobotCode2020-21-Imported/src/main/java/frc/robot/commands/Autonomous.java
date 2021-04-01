@@ -93,7 +93,7 @@ public class Autonomous {
         );
     }
 
-
+    public final boolean EDIT_SPEEDS = true;
     public double DRIVE_SPEED = 1.1, TURN_SPEED = 1;
 
     public Command barrelRacing() {

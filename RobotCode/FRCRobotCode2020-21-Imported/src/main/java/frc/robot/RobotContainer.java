@@ -96,6 +96,9 @@ public class RobotContainer {
     SmartDashboard.putNumber("hood angle", hood.getHoodAngle());
     SmartDashboard.putBoolean("limit", hood.getLimitSwitch());
     SmartDashboard.putBoolean("is calibrated", hood.isCalibrated());
+
+    autonomous.DRIVE_SPEED = SmartDashboard.getNumber("drive speed (ft/s)", autonomous.DRIVE_SPEED);
+    autonomous.TURN_SPEED = SmartDashboard.getNumber("turn speed (ft/s)", autonomous.TURN_SPEED);
   }
 
 
