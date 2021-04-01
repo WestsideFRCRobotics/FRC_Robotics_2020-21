@@ -64,7 +64,12 @@ public class RobotContainer {
     chooser.addOption("None", new InstantCommand());
     chooser.addOption("squareOld", autonomous.SquareOld());
     chooser.addOption("squareNew", autonomous.SquareNew());
-    chooser.addOption("test", autonomous.test());
+    chooser.addOption("testDrive", autonomous.testDrive());
+    chooser.addOption("testArc180", autonomous.testArc180());
+    chooser.addOption("testArc90", autonomous.testArc90());
+    chooser.addOption("barrelRacing", autonomous.barrelRacing());
+    chooser.addOption("slalom", autonomous.slalom());
+    chooser.addOption("bounce", autonomous.bouncePath());
     SmartDashboard.putData("Auto mode", chooser);
 
 

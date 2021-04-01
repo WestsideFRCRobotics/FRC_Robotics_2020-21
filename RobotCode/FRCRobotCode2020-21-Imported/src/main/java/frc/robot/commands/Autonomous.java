@@ -64,16 +64,37 @@ public class Autonomous {
     }
 
 
-    public Command test()
+    public Command testSpin()
     {
         return new SequentialCommandGroup(
             //new InstantCommand(()->movement.resetAngle()),  
             new TurnAngle(90, driveTrain, movement) //TODO: work out resetAngle and calibrate
         );
     }
+    public Command testDrive()
+    {
+        return new SequentialCommandGroup(
+            Drive.DriveDistance(DRIVE_SPEED, 10, driveTrain),
+            new StopAhead(1, driveTrain)
+        );
+    }
+    public Command testArc180()
+    {
+        return new SequentialCommandGroup(
+            Drive.DriveArcWithAngle(30.0/12, TURN_SPEED, 180, driveTrain, movement),
+            new StopAhead(1, driveTrain)
+        );
+    }
+    public Command testArc90()
+    {
+        return new SequentialCommandGroup(
+            Drive.DriveArcWithAngle(30.0/12, TURN_SPEED, 90, driveTrain, movement),
+            new StopAhead(1, driveTrain)
+        );
+    }
 
 
-    private final double DRIVE_SPEED = 1.1, TURN_SPEED = 1;
+    public double DRIVE_SPEED = 1.1, TURN_SPEED = 1;
 
     public Command barrelRacing() {
         return new SequentialCommandGroup(
