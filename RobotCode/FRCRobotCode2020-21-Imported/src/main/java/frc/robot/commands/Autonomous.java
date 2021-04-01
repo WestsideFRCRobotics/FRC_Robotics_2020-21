@@ -73,7 +73,7 @@ public class Autonomous {
     }
 
 
-    private final double DRIVE_SPEED = 2, TURN_SPEED = 1;
+    private final double DRIVE_SPEED = 1.1, TURN_SPEED = 1;
 
     public Command barrelRacing() {
         return new SequentialCommandGroup(
@@ -126,6 +126,37 @@ public class Autonomous {
             Drive.DriveArcWithAngle(-28.0/12, TURN_SPEED, -59.27, driveTrain, movement),
             
             new StopAhead(22.47/12, driveTrain)
+
+        );
+    }
+
+    public Command bouncePath(){
+        double bd = 7.0/12;
+        return new SequentialCommandGroup(
+
+            Drive.DriveDistance(DRIVE_SPEED, 30.0/12, driveTrain),
+
+            Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -90, driveTrain, movement),
+            new StopAhead(bd, driveTrain),
+
+            Drive.DriveDistance(-DRIVE_SPEED, -bd, driveTrain),
+            Drive.DriveArcWithAngle(17.09/12, -TURN_SPEED, -25.49, driveTrain, movement),
+            Drive.DriveDistance(-DRIVE_SPEED, -bd, driveTrain),
+            Drive.DriveArcWithAngle(30.0/12, -TURN_SPEED, -154.51, driveTrain, movement),
+            Drive.DriveDistance(-DRIVE_SPEED, -60.0/12, driveTrain),
+            new StopAhead(-bd, driveTrain),
+
+            Drive.DriveDistance(DRIVE_SPEED, 60.0/12+bd, driveTrain),
+            Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -90, driveTrain, movement),
+            Drive.DriveDistance(DRIVE_SPEED, 30.0/12, driveTrain),
+            Drive.DriveArcWithAngle(-30.0/12, TURN_SPEED, -90, driveTrain, movement),
+            Drive.DriveDistance(DRIVE_SPEED, 60.0/12, driveTrain),
+            new StopAhead(bd, driveTrain),
+
+            Drive.DriveDistance(-DRIVE_SPEED, -bd, driveTrain),
+            Drive.DriveArcWithAngle(30.0/12, -TURN_SPEED, -90, driveTrain, movement),
+
+            new StopAhead(-30.0/12, driveTrain)
 
         );
     }
