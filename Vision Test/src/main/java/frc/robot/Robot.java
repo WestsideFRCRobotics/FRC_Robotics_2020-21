@@ -17,7 +17,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-
     ShuffleboardTab tab = Shuffleboard.getTab("Vision");
     tab.addCamera("View", "FHD_Camera");
   }
@@ -44,6 +43,10 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumberArray("coordinates "+ String.valueOf(target.getFiducialId()), new double[]
         {target.getBestCameraToTarget().getX(),target.getBestCameraToTarget().getY(),target.getBestCameraToTarget().getZ()});
         SmartDashboard.putNumber("distance to target", PhotonUtils.calculateDistanceToTargetMeters(kDefaultPeriod, kDefaultPeriod, kDefaultPeriod, kDefaultPeriod));
+
+        
+
+
       }
     }
   }
