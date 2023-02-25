@@ -5,6 +5,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 
 /*
 import edu.wpi.first.wpilibj.Timer;
@@ -16,6 +18,7 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.List;
 import org.photonvision.PhotonCamera;
+import org.photonvision.PhotonUtils;
 import org.photonvision.targeting.PhotonPipelineResult;
 import org.photonvision.targeting.PhotonTrackedTarget;
 
@@ -35,7 +38,7 @@ public class Robot extends TimedRobot {
   private final Timer m_timer = new Timer();
   */
 
-  public static PhotonCamera camera = new PhotonCamera("OV5647");
+  public static PhotonCamera camera = new PhotonCamera("FHD_Camera");
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -47,7 +50,8 @@ public class Robot extends TimedRobot {
     // result in both sides moving forward. Depending on how your robot's
     // gearbox is constructed, you might have to invert the left side instead.
 
-    //m_rightDrive.setInverted(true);
+    ShuffleboardTab tab = Shuffleboard.getTab("Vision");
+    tab.addCamera("View", "FHD_Camera");
   }
 
   /** This function is run once each time the robot enters autonomous mode. */
@@ -80,11 +84,12 @@ public class Robot extends TimedRobot {
     PhotonPipelineResult cameraResult = camera.getLatestResult();
     if(cameraResult.hasTargets()){
       List<PhotonTrackedTarget> targets = cameraResult.getTargets();
+      int cnt = 0;
       for(PhotonTrackedTarget target : targets){
-        SmartDashboard.putNumber("id", target.getFiducialId());
-        SmartDashboard.putNumber("X", target.getBestCameraToTarget().getX());
-        SmartDashboard.putNumber("Y", target.getBestCameraToTarget().getY());
-        SmartDashboard.putNumber("Z", target.getBestCameraToTarget().getZ());
+        SmartDashboard.putNumber("id" + String.valueOf(cnt), target.getFiducialId());
+        SmartDashboard.putNumberArray("coordinates "+ String.valueOf(target.getFiducialId()), new double[]
+        {target.getBestCameraToTarget().getX(),target.getBestCameraToTarget().getY(),target.getBestCameraToTarget().getZ()});
+        SmartDashboard.putNumber("distance to target", PhotonUtils.calculateDistanceToTargetMeters(kDefaultPeriod, kDefaultPeriod, kDefaultPeriod, kDefaultPeriod));
       }
     }
   }
